@@ -97,6 +97,539 @@ class v0:
         return cls.id
 
 
+class v1:
+    bits: list = []
+    id = '000011'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class a0:
+    bits: list = []
+    id = '000100'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class a1:
+    bits: list = []
+    id = '000101'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class a2:
+    bits: list = []
+    id = '000110'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class a3:
+    bits: list = []
+    id = '000111'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class t0:
+    bits: list = []
+    id = '001000'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class t1:
+    bits: list = []
+    id = '001001'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class t2:
+    bits: list = []
+    id = '001010'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class t3:
+    bits: list = []
+    id = '001011'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class t4:
+    bits: list = []
+    id = '001100'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class t5:
+    bits: list = []
+    id = '001101'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class t6:
+    bits: list = []
+    id = '001110'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
+class t7:
+    bits: list = []
+    id = '001111'
+
+    @classmethod
+    def inicializar(cls):
+        for contador in range(32):
+            cls.bits.insert(0, '0')
+
+    @classmethod
+    def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
+        if type(sequencia_de_bits) != list:
+            sequencia_de_bits = list(sequencia_de_bits)
+        cont: int = 0
+        for valor in range(bit_inicial, bit_final + 1):
+            cls.bits[valor] = sequencia_de_bits[cont]
+            cont += 1
+
+    @classmethod
+    def get_bits(cls, bit_inicial, bit_final):
+        return cls.bits[bit_inicial:(bit_final + 1)]
+
+    @classmethod
+    def set(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.bits = bits
+        elif len(bits) == 32:
+            for valor in bits:
+                cls.bits.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get(cls):
+        return cls.bits
+
+    @classmethod
+    def get_id(cls):
+        return cls.id
+
+
 class s0:
     bits: list = []
     id = '010000'
