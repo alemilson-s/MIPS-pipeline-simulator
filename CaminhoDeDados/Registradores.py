@@ -25,6 +25,9 @@ class zero:
 
 
 class v0:
+    """
+    Classe representando o registrador $zero
+    """
     bits: list = []  # Lista utilizada para representar os 32 bits do registrador
     id = '000010'
 
