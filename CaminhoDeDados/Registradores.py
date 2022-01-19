@@ -95,3 +95,6 @@ class s0:
         :return: id -> número do registrador
         """
         return cls.id
+
+
+print("asasas")
