@@ -23,9 +23,6 @@ class zero:
         """
         return cls.id
 
-print("jj")
-
-
 
 class s0:
     bits: list = []  # Lista utilizada para representar os 32 bits do registrador
@@ -98,6 +95,3 @@ class s0:
         :return: id -> número do registrador
         """
         return cls.id
-
-
-print("asasas")
