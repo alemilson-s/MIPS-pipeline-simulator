@@ -87,7 +87,6 @@ class MemoriaDeInstrucoes:
                 aux[indice] = '0'
                 cls.endereco_atual = "".join(aux)
                 vai_um = True
-        print(cls.endereco_atual)
 
     @classmethod
     def getInstrucao(cls, endereco):
