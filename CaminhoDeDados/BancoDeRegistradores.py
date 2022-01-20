@@ -76,7 +76,7 @@ class v0:
         :return: Não há retorno
         """
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -125,7 +125,7 @@ class v1:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -166,7 +166,7 @@ class a0:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -207,7 +207,7 @@ class a1:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -248,7 +248,7 @@ class a2:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -289,7 +289,7 @@ class a3:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -330,7 +330,7 @@ class t0:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -371,7 +371,7 @@ class t1:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -412,7 +412,7 @@ class t2:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -453,7 +453,7 @@ class t3:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -494,7 +494,7 @@ class t4:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -535,7 +535,7 @@ class t5:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -576,7 +576,7 @@ class t6:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -617,7 +617,7 @@ class t7:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -658,7 +658,7 @@ class s0:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -699,7 +699,7 @@ class s1:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -740,7 +740,7 @@ class s2:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -781,7 +781,7 @@ class s3:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -822,7 +822,7 @@ class s4:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -863,7 +863,7 @@ class s5:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -904,7 +904,7 @@ class s6:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -945,7 +945,7 @@ class s7:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -986,7 +986,7 @@ class t8:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -1027,7 +1027,7 @@ class t9:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -1068,7 +1068,7 @@ class sp:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
@@ -1109,7 +1109,7 @@ class ra:
     @classmethod
     def set(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.bits = bits
+            cls.bits = bits.copy()
         elif len(bits) == 32:
             for valor in bits:
                 cls.bits.insert(0, valor)
