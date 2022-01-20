@@ -97,14 +97,14 @@ class MemoriaDeInstrucoes:
         :return: Instrução vinculada ao endereço
         """
         return cls.instrucoes[endereco].getInstrucao()
+
 #
-#
-# Exemplos de utilização da inserção de instruções
+# # Exemplos de utilização da inserção de instruções
 # MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
 # MemoriaDeInstrucoes.inserir_instrucao("11110011010000000101010101010111")
 # MemoriaDeInstrucoes.inserir_instrucao("00000010001100100100000000100000")
 # MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
 # MemoriaDeInstrucoes.inserir_instrucao("11111111111111111111111111111111")
 # MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
-# Exemplo de recuperação de instrução
+# # Exemplo de recuperação de instrução
 # print(MemoriaDeInstrucoes.getInstrucao("00000000000000000000000001100000"))
