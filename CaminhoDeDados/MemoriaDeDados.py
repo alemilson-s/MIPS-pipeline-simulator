@@ -44,6 +44,7 @@ class MemoriaDeDados:
     """
     Classe representando a memória de dados
     """
+
     dados: map = {}  # Dicionário que vincula endereços de memória a dados
 
     @classmethod
