@@ -12,6 +12,7 @@ class Instrucao:
         if type(bits) == list and len(bits) == 32:
             self.bits = bits.copy()
         elif len(bits) == 32:
+            self.bits.clear()
             for valor in bits:
                 self.bits.insert(0, valor)
         else:

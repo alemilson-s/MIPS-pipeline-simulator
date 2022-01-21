@@ -78,6 +78,7 @@ class v0:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -127,6 +128,7 @@ class v1:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -168,6 +170,7 @@ class a0:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -209,6 +212,7 @@ class a1:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -250,6 +254,7 @@ class a2:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -291,6 +296,7 @@ class a3:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -332,6 +338,7 @@ class t0:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -373,6 +380,7 @@ class t1:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -414,6 +422,7 @@ class t2:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -455,6 +464,7 @@ class t3:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -496,6 +506,7 @@ class t4:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -537,6 +548,7 @@ class t5:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -578,6 +590,7 @@ class t6:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -619,6 +632,7 @@ class t7:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -660,6 +674,7 @@ class s0:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -701,6 +716,7 @@ class s1:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -742,6 +758,7 @@ class s2:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -783,6 +800,7 @@ class s3:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -824,6 +842,7 @@ class s4:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -865,6 +884,7 @@ class s5:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -906,6 +926,7 @@ class s6:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -947,6 +968,7 @@ class s7:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -988,6 +1010,7 @@ class t8:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -1029,6 +1052,7 @@ class t9:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -1070,6 +1094,7 @@ class sp:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
@@ -1111,6 +1136,7 @@ class ra:
         if type(bits) == list and len(bits) == 32:
             cls.bits = bits.copy()
         elif len(bits) == 32:
+            cls.bits.clear()
             for valor in bits:
                 cls.bits.insert(0, valor)
         else:
