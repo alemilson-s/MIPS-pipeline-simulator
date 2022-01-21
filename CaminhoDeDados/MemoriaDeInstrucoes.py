@@ -31,6 +31,8 @@ class MemoriaDeInstrucoes:
     Classe representando a memória de instruções
     """
     instrucoes: map = {}  # Dicionário que vincula endereços de memória a instruções
+    readAddress = "00000000000000000000000000000000"
+    instruction = "00000000000000000000000000000000"
     endereco_atual = "00000000000000000000000000000000"  # Endereço ao qual uma nova instrução será vinculado
 
     @classmethod
@@ -90,15 +92,24 @@ class MemoriaDeInstrucoes:
                 vai_um = True
 
     @classmethod
-    def getInstrucao(cls, endereco):
+    def setAddress(cls, address):
+        if type(address) == str and len(address) == 32:
+            cls.readAddress = str(address)
+        elif len(address) == 32:
+            cls.address = ""
+            for valor in address:
+                cls.readAddress = cls.readAddress + cls.readAddress.join(valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def getInstrucao(cls):
         """
         Método para retornar uma instrução dado seu endereço
-        :param endereco: Endereço de uma instrução
-        :return: Instrução vinculada ao endereço
         """
-        return cls.instrucoes[endereco].getInstrucao()
+        cls.instruction = cls.instrucoes[cls.readAddress].getInstrucao()
+        return cls.instruction
 
-#
 # # Exemplos de utilização da inserção de instruções
 # MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
 # MemoriaDeInstrucoes.inserir_instrucao("11110011010000000101010101010111")
@@ -107,4 +118,8 @@ class MemoriaDeInstrucoes:
 # MemoriaDeInstrucoes.inserir_instrucao("11111111111111111111111111111111")
 # MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
 # # Exemplo de recuperação de instrução
-# print(MemoriaDeInstrucoes.getInstrucao("00000000000000000000000001100000"))
+# print(MemoriaDeInstrucoes.getInstrucao())
+# MemoriaDeInstrucoes.setAddress("00000000000000000000000000100000")
+# print(MemoriaDeInstrucoes.getInstrucao())
+# MemoriaDeInstrucoes.setAddress("00000000000000000000000010000000")
+# print(MemoriaDeInstrucoes.getInstrucao())

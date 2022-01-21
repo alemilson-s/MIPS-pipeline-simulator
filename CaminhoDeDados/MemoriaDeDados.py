@@ -46,6 +46,9 @@ class MemoriaDeDados:
     """
 
     dados: map = {}  # Dicionário que vincula endereços de memória a dados
+    address = ""  #
+    writeData = ""
+    readData = ""
 
     @classmethod
     def inicializar_memoria(cls):
@@ -54,6 +57,10 @@ class MemoriaDeDados:
         :param bits: String representando os 32 bits do dado
         :return: Não há retorno
         """
+        cls.address = "00000000000000000000000000000000"
+        cls.writeData = "00000000000000000000000000000000"
+        cls.readData = "00000000000000000000000000000000"
+
         endereco_atual = "00000000000000000000000000000000"  # Endereço ao qual um novo dado será vinculado
         quatro_bytes = "000001000000000000000000000000000"  # Variável para auxiliar no cálculo do endereço do
         # próximo dado
@@ -61,7 +68,7 @@ class MemoriaDeDados:
         # invertendo os bits do dado para manter o padrão
         vai_um: bool = False  # Variável para auxiliar na soma binária de endereco_atual com quatro_bytes
         while endereco_atual != "00000000000010000000000000000000":
-            # print(endereco_atual[::-1])
+            print(endereco_atual[::-1])
             cls.dados[endereco_atual[::-1]] = Dado("00000000000000000000000000000000")  # Instanciando um novo dado e
             # invertendo os bits do dado para manter o padrão
             for indice, valor in enumerate(endereco_atual):
@@ -107,27 +114,45 @@ class MemoriaDeDados:
                     vai_um = True
 
     @classmethod
-    def get(cls, endereco):
+    def get(cls):
         """
         Método para retornar um dado recebido seu endereço
-        :param endereco: Endereço de um dado
-        :return: dado vinculado ao endereço
         """
-        return cls.dados[endereco].getDado()
+        cls.readData = cls.dados[cls.address].getDado()
+        return cls.readData
 
     @classmethod
-    def set(cls, endereco, dado):
+    def set(cls):
         """
         Método para alterar o conteudo de um endereco de memoria
-        :param endereco: Representa um endereco de memoria
-        :param dado: Dado que sera escrito no endereco de memoria
         """
-        cls.dados[endereco].setDado(dado)
+        cls.dados[cls.address].setDado(cls.writeData)
 
+    @classmethod
+    def setAddress(cls, address):
+        if type(address) == str and len(address) == 32:
+            cls.address = str(address)
+        elif len(address) == 32:
+            cls.address = ""
+            for valor in address:
+                cls.address = cls.address + cls.address.join(valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
 
-MemoriaDeDados.inicializar_memoria()
-MemoriaDeDados.set("00000000000000000000000001100000", "00000011010000000101010101010111")
-print(MemoriaDeDados.get("00000000000000000000000001100000"))
-print(MemoriaDeDados.get("00000000000000000000111111100000"))
-MemoriaDeDados.set("00000000000000000000111111100000", "11111111111111111111111111111111")
-print(MemoriaDeDados.get("00000000000000000000111111100000"))
+    @classmethod
+    def setWriteDate(cls, writeData):
+        if type(writeData) == str and len(writeData) == 32:
+            cls.writeData = str(writeData)
+        elif len(writeData) == 32:
+            cls.writeData = ""
+            for valor in writeData:
+                cls.writeData = cls.writeData + cls.writeData.join(valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+# MemoriaDeDados.inicializar_memoria()
+# MemoriaDeDados.setAddress("00000000000000000000111110000000")
+# print(MemoriaDeDados.get())
+# MemoriaDeDados.setWriteDate("00000111000000000000111110111111")
+# MemoriaDeDados.set()
+# print(MemoriaDeDados.get())

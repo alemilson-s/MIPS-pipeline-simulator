@@ -1,3 +1,233 @@
+class BancoDeRegistradores:
+    """
+    Classe representando o bancdo de registradores
+    """
+    readRegister1 = None
+    readRegister2 = None
+    writeRegister = None
+    writeData = None
+    readData1 = None
+    readData2 = None
+
+    @classmethod
+    def setReadRegister1(cls, numero_registrador):
+        if len(numero_registrador) == 5:
+            if type(numero_registrador) == list:
+                cls.readRegister1 = ""
+                for valor in numero_registrador:
+                    cls.readRegister1 = cls.readRegister1 + "".join(valor)
+                cls.readRegister1 = cls.readRegister1[::-1]
+            else:
+                cls.readRegister1 = numero_registrador
+
+    @classmethod
+    def setReadRegister2(cls, numero_registrador):
+        if len(numero_registrador) == 5:
+            if type(numero_registrador) == list:
+                cls.readRegister2 = ""
+                for valor in numero_registrador:
+                    cls.readRegister2 = cls.readRegister2 + "".join(valor)
+                cls.readRegister2 = cls.readRegister2[::-1]
+            else:
+                cls.readRegister2 = numero_registrador
+
+    @classmethod
+    def setWriteRegister(cls, numero_registrador):
+        if len(numero_registrador) == 5:
+            if type(numero_registrador) == list:
+                cls.writeRegister = ""
+                for valor in numero_registrador:
+                    cls.writeRegister = cls.writeRegister + "".join(valor)
+                cls.writeRegister = cls.writeRegister[::-1]
+            else:
+                cls.writeRegister = numero_registrador
+
+    @classmethod
+    def setWriteData(cls, bits):
+        if len(bits) == 32:
+            if type(bits) == list:
+                cls.writeData = bits
+            else:
+                cls.writeData = []
+                for valor in bits:
+                    cls.writeData.insert(0, valor)
+
+    @classmethod
+    def write(cls):
+        if cls.writeRegister == v0.get_id():
+            v0.set(cls.writeData)
+        elif cls.writeRegister == v1.get_id():
+            v1.set(cls.writeData)
+        elif cls.writeRegister == a0.get_id():
+            a0.set(cls.writeData)
+        elif cls.writeRegister == a1.get_id():
+            a1.set(cls.writeData)
+        elif cls.writeRegister == a2.get_id():
+            a2.set(cls.writeData)
+        elif cls.writeRegister == a3.get_id():
+            a3.set(cls.writeData)
+        elif cls.writeRegister == t0.get_id():
+            t0.set(cls.writeData)
+        elif cls.writeRegister == t1.get_id():
+            t1.set(cls.writeData)
+        elif cls.writeRegister == t2.get_id():
+            t2.set(cls.writeData)
+        elif cls.writeRegister == t3.get_id():
+            t3.set(cls.writeData)
+        elif cls.writeRegister == t4.get_id():
+            t4.set(cls.writeData)
+        elif cls.writeRegister == t5.get_id():
+            t5.set(cls.writeData)
+        elif cls.writeRegister == t6.get_id():
+            t6.set(cls.writeData)
+        elif cls.writeRegister == t7.get_id():
+            t7.set(cls.writeData)
+        elif cls.writeRegister == s0.get_id():
+            s0.set(cls.writeData)
+        elif cls.writeRegister == s1.get_id():
+            s1.set(cls.writeData)
+        elif cls.writeRegister == s2.get_id():
+            s2.set(cls.writeData)
+        elif cls.writeRegister == s3.get_id():
+            s3.set(cls.writeData)
+        elif cls.writeRegister == s4.get_id():
+            s4.set(cls.writeData)
+        elif cls.writeRegister == s5.get_id():
+            s5.set(cls.writeData)
+        elif cls.writeRegister == s6.get_id():
+            s6.set(cls.writeData)
+        elif cls.writeRegister == s7.get_id():
+            s7.set(cls.writeData)
+        elif cls.writeRegister == t8.get_id():
+            t8.set(cls.writeData)
+        elif cls.writeRegister == t9.get_id():
+            t9.set(cls.writeData)
+        elif cls.writeRegister == sp.get_id():
+            sp.set(cls.writeData)
+        elif cls.writeRegister == ra.get_id():
+            ra.set(cls.writeData)
+        else:
+            print("Registrador não encontrado!")
+
+    @classmethod
+    def getReadData1(cls):
+        if cls.readRegister1 == zero.get_id():
+            return zero.bits
+        elif cls.readRegister1 == v0.get_id():
+            return v0.get()
+        elif cls.readRegister1 == v1.get_id():
+            return v1.get()
+        elif cls.readRegister1 == a0.get_id():
+            return a0.get()
+        elif cls.readRegister1 == a1.get_id():
+            return a1.get()
+        elif cls.readRegister1 == a2.get_id():
+            return a2.get()
+        elif cls.readRegister1 == a3.get_id():
+            return a3.get()
+        elif cls.readRegister1 == t0.get_id():
+            return t0.get()
+        elif cls.readRegister1 == t1.get_id():
+            return t1.get()
+        elif cls.readRegister1 == t2.get_id():
+            return t2.get()
+        elif cls.readRegister1 == t3.get_id():
+            return t3.get()
+        elif cls.readRegister1 == t4.get_id():
+            return t4.get()
+        elif cls.readRegister1 == t5.get_id():
+            return t5.get()
+        elif cls.readRegister1 == t6.get_id():
+            return t6.get()
+        elif cls.readRegister1 == t7.get_id():
+            return t7.get()
+        elif cls.readRegister1 == s0.get_id():
+            return s0.get()
+        elif cls.readRegister1 == s1.get_id():
+            return s1.get()
+        elif cls.readRegister1 == s2.get_id():
+            return s2.get()
+        elif cls.readRegister1 == s3.get_id():
+            return s3.get()
+        elif cls.readRegister1 == s4.get_id():
+            return s4.get()
+        elif cls.readRegister1 == s5.get_id():
+            return s5.get()
+        elif cls.readRegister1 == s6.get_id():
+            return s6.get()
+        elif cls.readRegister1 == s7.get_id():
+            return s7.get()
+        elif cls.readRegister1 == t8.get_id():
+            return t8.get()
+        elif cls.readRegister1 == t9.get_id():
+            return t9.get()
+        elif cls.readRegister1 == sp.get_id():
+            return sp.get()
+        elif cls.readRegister1 == ra.get_id():
+            return ra.get()
+        else:
+            print("Registrador não encontrado!")
+
+        @classmethod
+        def getReadData2(cls):
+            if cls.readRegister2 == zero.get_id():
+                return zero.bits
+            elif cls.readRegister2 == v0.get_id():
+                return v0.get()
+            elif cls.readRegister2 == v1.get_id():
+                return v1.get()
+            elif cls.readRegister2 == a0.get_id():
+                return a0.get()
+            elif cls.readRegister2 == a1.get_id():
+                return a1.get()
+            elif cls.readRegister2 == a2.get_id():
+                return a2.get()
+            elif cls.readRegister2 == a3.get_id():
+                return a3.get()
+            elif cls.readRegister2 == t0.get_id():
+                return t0.get()
+            elif cls.readRegister2 == t1.get_id():
+                return t1.get()
+            elif cls.readRegister2 == t2.get_id():
+                return t2.get()
+            elif cls.readRegister2 == t3.get_id():
+                return t3.get()
+            elif cls.readRegister2 == t4.get_id():
+                return t4.get()
+            elif cls.readRegister2 == t5.get_id():
+                return t5.get()
+            elif cls.readRegister2 == t6.get_id():
+                return t6.get()
+            elif cls.readRegister2 == t7.get_id():
+                return t7.get()
+            elif cls.readRegister2 == s0.get_id():
+                return s0.get()
+            elif cls.readRegister2 == s1.get_id():
+                return s1.get()
+            elif cls.readRegister2 == s2.get_id():
+                return s2.get()
+            elif cls.readRegister2 == s3.get_id():
+                return s3.get()
+            elif cls.readRegister2 == s4.get_id():
+                return s4.get()
+            elif cls.readRegister2 == s5.get_id():
+                return s5.get()
+            elif cls.readRegister2 == s6.get_id():
+                return s6.get()
+            elif cls.readRegister2 == s7.get_id():
+                return s7.get()
+            elif cls.readRegister2 == t8.get_id():
+                return t8.get()
+            elif cls.readRegister2 == t9.get_id():
+                return t9.get()
+            elif cls.readRegister2 == sp.get_id():
+                return sp.get()
+            elif cls.readRegister2 == ra.get_id():
+                return ra.get()
+            else:
+                print("Registrador não encontrado!")
+
+
 class zero:
     """
     Classe representando o registrador $zero
@@ -34,7 +264,7 @@ class v0:
     Classe representando o registrador $zero
     """
     bits: list = []  # Lista utilizada para representar os 32 bits do registrador
-    id = '000010'
+    id = '00010'
     inicializado: bool = False
 
     @classmethod
@@ -124,7 +354,7 @@ class v0:
 
 class v1:
     bits: list = []
-    id = '000011'
+    id = '00011'
     inicializado: bool = False
 
     @classmethod
@@ -183,7 +413,7 @@ class v1:
 
 class a0:
     bits: list = []
-    id = '000100'
+    id = '00100'
     inicializado: bool = False
 
     @classmethod
@@ -242,7 +472,7 @@ class a0:
 
 class a1:
     bits: list = []
-    id = '000101'
+    id = '00101'
     inicializado: bool = False
 
     @classmethod
@@ -301,7 +531,7 @@ class a1:
 
 class a2:
     bits: list = []
-    id = '000110'
+    id = '00110'
     inicializado: bool = False
 
     @classmethod
@@ -360,7 +590,7 @@ class a2:
 
 class a3:
     bits: list = []
-    id = '000111'
+    id = '00111'
     inicializado: bool = False
 
     @classmethod
@@ -419,7 +649,7 @@ class a3:
 
 class t0:
     bits: list = []
-    id = '001000'
+    id = '01000'
     inicializado: bool = False
 
     @classmethod
@@ -478,7 +708,7 @@ class t0:
 
 class t1:
     bits: list = []
-    id = '001001'
+    id = '01001'
     inicializado: bool = False
 
     @classmethod
@@ -537,7 +767,7 @@ class t1:
 
 class t2:
     bits: list = []
-    id = '001010'
+    id = '01010'
     inicializado: bool = False
 
     @classmethod
@@ -596,7 +826,7 @@ class t2:
 
 class t3:
     bits: list = []
-    id = '001011'
+    id = '01011'
     inicializado: bool = False
 
     @classmethod
@@ -654,7 +884,7 @@ class t3:
 
 class t4:
     bits: list = []
-    id = '001100'
+    id = '01100'
     inicializado: bool = False
 
     @classmethod
@@ -713,7 +943,7 @@ class t4:
 
 class t5:
     bits: list = []
-    id = '001101'
+    id = '01101'
     inicializado: bool = False
 
     @classmethod
@@ -772,7 +1002,7 @@ class t5:
 
 class t6:
     bits: list = []
-    id = '001110'
+    id = '01110'
     inicializado: bool = False
 
     @classmethod
@@ -831,7 +1061,7 @@ class t6:
 
 class t7:
     bits: list = []
-    id = '001111'
+    id = '01111'
     inicializado: bool = False
 
     @classmethod
@@ -890,7 +1120,7 @@ class t7:
 
 class s0:
     bits: list = []
-    id = '010000'
+    id = '10000'
     inicializado: bool = False
 
     @classmethod
@@ -949,7 +1179,7 @@ class s0:
 
 class s1:
     bits: list = []
-    id = '010001'
+    id = '10001'
     inicializado: bool = False
 
     @classmethod
@@ -1008,7 +1238,7 @@ class s1:
 
 class s2:
     bits: list = []
-    id = '010010'
+    id = '10010'
     inicializado: bool = False
 
     @classmethod
@@ -1067,7 +1297,7 @@ class s2:
 
 class s3:
     bits: list = []
-    id = '010011'
+    id = '10011'
     inicializado: bool = False
 
     @classmethod
@@ -1126,7 +1356,7 @@ class s3:
 
 class s4:
     bits: list = []
-    id = '010100'
+    id = '10100'
     inicializado: bool = False
 
     @classmethod
@@ -1185,7 +1415,7 @@ class s4:
 
 class s5:
     bits: list = []
-    id = '010101'
+    id = '10101'
     inicializado: bool = False
 
     @classmethod
@@ -1244,7 +1474,7 @@ class s5:
 
 class s6:
     bits: list = []
-    id = '010110'
+    id = '10110'
     inicializado: bool = False
 
     @classmethod
@@ -1303,7 +1533,7 @@ class s6:
 
 class s7:
     bits: list = []
-    id = '010111'
+    id = '10111'
     inicializado: bool = False
 
     @classmethod
@@ -1362,7 +1592,7 @@ class s7:
 
 class t8:
     bits: list = []
-    id = '011000'
+    id = '11000'
     inicializado: bool = False
 
     @classmethod
@@ -1421,7 +1651,7 @@ class t8:
 
 class t9:
     bits: list = []
-    id = '011001'
+    id = '11001'
     inicializado: bool = False
 
     @classmethod
@@ -1480,7 +1710,7 @@ class t9:
 
 class sp:
     bits: list = []
-    id = '011101'
+    id = '11101'
     inicializado: bool = False
 
     @classmethod
@@ -1539,7 +1769,7 @@ class sp:
 
 class ra:
     bits: list = []
-    id = '011111'
+    id = '11111'
     inicializado: bool = False
 
     @classmethod
@@ -1594,3 +1824,10 @@ class ra:
             cls.inicializar()
 
         return cls.id
+
+
+BancoDeRegistradores.setReadRegister1(list("01000"))
+BancoDeRegistradores.setWriteRegister("00010")
+BancoDeRegistradores.setWriteData("11110000100000000000000000000000")
+BancoDeRegistradores.write()
+print(v0.get())
