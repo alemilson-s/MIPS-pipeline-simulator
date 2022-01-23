@@ -114,19 +114,26 @@ class MemoriaDeDados:
                     vai_um = True
 
     @classmethod
-    def get(cls):
+    def read(cls):
         """
-        Método para retornar um dado recebido seu endereço
+        Método para ler o dado de um endereco de memoria
+        :return:
         """
         cls.readData = cls.dados[cls.address].getDado()
-        return cls.readData
 
     @classmethod
-    def set(cls):
+    def write(cls):
         """
         Método para alterar o conteudo de um endereco de memoria
         """
         cls.dados[cls.address].setDado(cls.writeData)
+
+    @classmethod
+    def getReadData(cls):
+        """
+        Método para retornar dado contido em readData
+        """
+        return cls.readData
 
     @classmethod
     def setAddress(cls, address):

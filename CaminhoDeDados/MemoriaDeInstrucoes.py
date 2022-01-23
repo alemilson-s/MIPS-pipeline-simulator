@@ -31,8 +31,8 @@ class MemoriaDeInstrucoes:
     Classe representando a memória de instruções
     """
     instrucoes: map = {}  # Dicionário que vincula endereços de memória a instruções
-    readAddress = "00000000000000000000000000000000"
-    instruction = "00000000000000000000000000000000"
+    readAddress = "00000000000000000000000000000000"  # Endereço recibo de PC
+    instruction = "00000000000000000000000000000000"  # Instrução lida da memória
     endereco_atual = "00000000000000000000000000000000"  # Endereço ao qual uma nova instrução será vinculado
 
     @classmethod
@@ -92,7 +92,7 @@ class MemoriaDeInstrucoes:
                 vai_um = True
 
     @classmethod
-    def setAddress(cls, address):
+    def setReadAddress(cls, address):
         if type(address) == str and len(address) == 32:
             cls.readAddress = str(address)
         elif len(address) == 32:
@@ -103,7 +103,7 @@ class MemoriaDeInstrucoes:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getInstrucao(cls):
+    def getInstruction(cls):
         """
         Método para retornar uma instrução dado seu endereço
         """

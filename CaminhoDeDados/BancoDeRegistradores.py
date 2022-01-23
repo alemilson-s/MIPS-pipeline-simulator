@@ -2,12 +2,12 @@ class BancoDeRegistradores:
     """
     Classe representando o bancdo de registradores
     """
-    readRegister1 = None
-    readRegister2 = None
-    writeRegister = None
-    writeData = None
-    readData1 = None
-    readData2 = None
+    readRegister1 = None  # Número do registrador operando 1 do bando de registradores
+    readRegister2 = None  # Número do registrador operando 2 do bonco de registradores
+    writeRegister = None  # Número do Registrador a ser escrito
+    writeData = None  # Bits do dado a ser escrito
+    readData1 = None  # Bits do dado contido no primeiro operando
+    readData2 = None  # Bits do dado contido no segundo operando
 
     @classmethod
     def setReadRegister1(cls, numero_registrador):
@@ -54,6 +54,10 @@ class BancoDeRegistradores:
 
     @classmethod
     def write(cls):
+        """
+        Método para escrever no banco de registradores
+        :return:
+        """
         if cls.writeRegister == v0.get_id():
             v0.set(cls.writeData)
         elif cls.writeRegister == v1.get_id():
@@ -168,64 +172,64 @@ class BancoDeRegistradores:
         else:
             print("Registrador não encontrado!")
 
-        @classmethod
-        def getReadData2(cls):
-            if cls.readRegister2 == zero.get_id():
-                return zero.bits
-            elif cls.readRegister2 == v0.get_id():
-                return v0.get()
-            elif cls.readRegister2 == v1.get_id():
-                return v1.get()
-            elif cls.readRegister2 == a0.get_id():
-                return a0.get()
-            elif cls.readRegister2 == a1.get_id():
-                return a1.get()
-            elif cls.readRegister2 == a2.get_id():
-                return a2.get()
-            elif cls.readRegister2 == a3.get_id():
-                return a3.get()
-            elif cls.readRegister2 == t0.get_id():
-                return t0.get()
-            elif cls.readRegister2 == t1.get_id():
-                return t1.get()
-            elif cls.readRegister2 == t2.get_id():
-                return t2.get()
-            elif cls.readRegister2 == t3.get_id():
-                return t3.get()
-            elif cls.readRegister2 == t4.get_id():
-                return t4.get()
-            elif cls.readRegister2 == t5.get_id():
-                return t5.get()
-            elif cls.readRegister2 == t6.get_id():
-                return t6.get()
-            elif cls.readRegister2 == t7.get_id():
-                return t7.get()
-            elif cls.readRegister2 == s0.get_id():
-                return s0.get()
-            elif cls.readRegister2 == s1.get_id():
-                return s1.get()
-            elif cls.readRegister2 == s2.get_id():
-                return s2.get()
-            elif cls.readRegister2 == s3.get_id():
-                return s3.get()
-            elif cls.readRegister2 == s4.get_id():
-                return s4.get()
-            elif cls.readRegister2 == s5.get_id():
-                return s5.get()
-            elif cls.readRegister2 == s6.get_id():
-                return s6.get()
-            elif cls.readRegister2 == s7.get_id():
-                return s7.get()
-            elif cls.readRegister2 == t8.get_id():
-                return t8.get()
-            elif cls.readRegister2 == t9.get_id():
-                return t9.get()
-            elif cls.readRegister2 == sp.get_id():
-                return sp.get()
-            elif cls.readRegister2 == ra.get_id():
-                return ra.get()
-            else:
-                print("Registrador não encontrado!")
+    @classmethod
+    def getReadData2(cls):
+        if cls.readRegister2 == zero.get_id():
+            return zero.bits
+        elif cls.readRegister2 == v0.get_id():
+            return v0.get()
+        elif cls.readRegister2 == v1.get_id():
+            return v1.get()
+        elif cls.readRegister2 == a0.get_id():
+            return a0.get()
+        elif cls.readRegister2 == a1.get_id():
+            return a1.get()
+        elif cls.readRegister2 == a2.get_id():
+            return a2.get()
+        elif cls.readRegister2 == a3.get_id():
+            return a3.get()
+        elif cls.readRegister2 == t0.get_id():
+            return t0.get()
+        elif cls.readRegister2 == t1.get_id():
+            return t1.get()
+        elif cls.readRegister2 == t2.get_id():
+            return t2.get()
+        elif cls.readRegister2 == t3.get_id():
+            return t3.get()
+        elif cls.readRegister2 == t4.get_id():
+            return t4.get()
+        elif cls.readRegister2 == t5.get_id():
+            return t5.get()
+        elif cls.readRegister2 == t6.get_id():
+            return t6.get()
+        elif cls.readRegister2 == t7.get_id():
+            return t7.get()
+        elif cls.readRegister2 == s0.get_id():
+            return s0.get()
+        elif cls.readRegister2 == s1.get_id():
+            return s1.get()
+        elif cls.readRegister2 == s2.get_id():
+            return s2.get()
+        elif cls.readRegister2 == s3.get_id():
+            return s3.get()
+        elif cls.readRegister2 == s4.get_id():
+            return s4.get()
+        elif cls.readRegister2 == s5.get_id():
+            return s5.get()
+        elif cls.readRegister2 == s6.get_id():
+            return s6.get()
+        elif cls.readRegister2 == s7.get_id():
+            return s7.get()
+        elif cls.readRegister2 == t8.get_id():
+            return t8.get()
+        elif cls.readRegister2 == t9.get_id():
+            return t9.get()
+        elif cls.readRegister2 == sp.get_id():
+            return sp.get()
+        elif cls.readRegister2 == ra.get_id():
+            return ra.get()
+        else:
+            print("Registrador não encontrado!")
 
 
 class zero:
