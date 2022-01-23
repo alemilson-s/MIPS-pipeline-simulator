@@ -68,7 +68,7 @@ class MemoriaDeDados:
         # invertendo os bits do dado para manter o padrão
         vai_um: bool = False  # Variável para auxiliar na soma binária de endereco_atual com quatro_bytes
         while endereco_atual != "00000000000010000000000000000000":
-            print(endereco_atual[::-1])
+            # print(endereco_atual[::-1])
             cls.dados[endereco_atual[::-1]] = Dado("00000000000000000000000000000000")  # Instanciando um novo dado e
             # invertendo os bits do dado para manter o padrão
             for indice, valor in enumerate(endereco_atual):
@@ -157,9 +157,11 @@ class MemoriaDeDados:
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
-# MemoriaDeDados.inicializar_memoria()
-# MemoriaDeDados.setAddress("00000000000000000000111110000000")
-# print(MemoriaDeDados.get())
-# MemoriaDeDados.setWriteDate("00000111000000000000111110111111")
-# MemoriaDeDados.set()
-# print(MemoriaDeDados.get())
+
+MemoriaDeDados.inicializar_memoria()
+MemoriaDeDados.setAddress("00000000000000000000111110000000")
+print(MemoriaDeDados.getReadData())
+MemoriaDeDados.setWriteDate("00000111000000000000111110111111")
+MemoriaDeDados.write()
+MemoriaDeDados.read()
+print(MemoriaDeDados.getReadData())
