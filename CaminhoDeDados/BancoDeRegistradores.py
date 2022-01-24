@@ -19,6 +19,8 @@ class BancoDeRegistradores:
                 cls.readRegister1 = cls.readRegister1[::-1]
             else:
                 cls.readRegister1 = numero_registrador
+        else:
+            print("Número de bits deve ser igual à 5!")
 
     @classmethod
     def setReadRegister2(cls, numero_registrador):
@@ -30,6 +32,8 @@ class BancoDeRegistradores:
                 cls.readRegister2 = cls.readRegister2[::-1]
             else:
                 cls.readRegister2 = numero_registrador
+        else:
+            print("Número de bits deve ser igual à 5!")
 
     @classmethod
     def setWriteRegister(cls, numero_registrador):
