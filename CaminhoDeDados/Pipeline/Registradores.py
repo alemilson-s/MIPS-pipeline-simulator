@@ -352,7 +352,6 @@ class mem_wb:
 
     @classmethod
     def getMux_1(cls):
-
         return cls.mux_1
 
     @classmethod
@@ -368,7 +367,6 @@ class mem_wb:
 
     @classmethod
     def getMux_2(cls):
-
         return cls.mux_2
 
     @classmethod
@@ -384,5 +382,4 @@ class mem_wb:
 
     @classmethod
     def getAlu(cls):
-
         return cls.alu
