@@ -186,7 +186,7 @@ class id_ex:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getInstruction_11_15(cls, bits):
+    def getInstruction_11_15(cls):
         return cls.instruction_11_15
 
     @classmethod
