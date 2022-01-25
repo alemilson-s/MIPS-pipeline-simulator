@@ -80,8 +80,8 @@ class FowardingUnit:
 
 
 class HazardDetectionUnit:
-    MemRead_id_ex = False  # Sinal que indica leitura na memória,
-    # caso sinal esteja habilitado há chances de ocorrer ter stall
+    MemRead_id_ex = False  # Sinal que indica se será feita leitura na memória,
+    # caso sinal esteja habilitado há chances de ocorrer stall
     Rd_id_ex = None  # Vem da instrução contida em ID/EX, bits [16-20] -> Número do registrador
     Rs_if_id = None  # Vem da instrução lida de IF/ID, bits [21-25] -> Número do registrador
     Rt_if_id = None  # Vem da instrução lida de IF/ID, bits [16-20] -> Número do registrador
