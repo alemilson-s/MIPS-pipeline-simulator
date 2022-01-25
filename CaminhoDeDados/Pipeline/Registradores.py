@@ -224,7 +224,7 @@ class id_ex:
         return cls.readRegister_2
 
 
-class mem_wb:
+class ex_mem:
     # Linas de controledo estágio de acesso à memória
     MemRead = None
     MemWrite = None
@@ -314,7 +314,7 @@ class mem_wb:
         return cls.alu
 
 
-class ex_mem:
+class mem_wb:
     # Linhas de controle do estágio de escrita do resultado
     RegWrite = None
     MemtoReg = None
