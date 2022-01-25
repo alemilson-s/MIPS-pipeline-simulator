@@ -225,6 +225,9 @@ class id_ex:
 
 
 class ex_mem:
+    # Linas de controledo estágio de acesso à memória
+    MemRead = None
+    MemWrite = None
     # Linhas de controle do estágio de escrita do resultado
     RegWrite = None
     MemtoReg = None
@@ -296,9 +299,6 @@ class ex_mem:
 
 
 class mem_wb:
-    # Linas de controledo estágio de acesso à memória
-    MemRead = None
-    MemWrite = None
     # Linhas de controle do estágio de escrita do resultado
     RegWrite = None
     MemtoReg = None
