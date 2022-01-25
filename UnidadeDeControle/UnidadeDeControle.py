@@ -57,22 +57,13 @@ class FowardingUnit:
 
     @classmethod
     def run(cls):
-        if cls.RegWrite_ex_mem and (
-                not cls.Rd_ex_mem.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.equals(cls.Rs):
-            cls.FowardA = "01"
-        else:
-            cls.FowardA = "00"
-
-        if cls.RegWrite_ex_mem and (
-                not cls.Rd_ex_mem.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.equals(cls.Rt):
-            cls.FowardB = "01"
-        else:
-            cls.FowardB = "00"
-
         if cls.RegWrite_mem_wb and (
                 not cls.Rd_mem_wb.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_mem_wb.equals(cls.Rs) and (
                 not cls.Rd_ex_mem.equals(cls.Rs)):
             cls.FowardA = "10"
+        elif cls.RegWrite_ex_mem and (
+                not cls.Rd_ex_mem.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.equals(cls.Rs):
+            cls.FowardA = "01"
         else:
             cls.FowardA = "00"
 
@@ -81,6 +72,9 @@ class FowardingUnit:
                 not cls.Rd_ex_mem.equals(cls.Rt)
         ):
             cls.FowardB = "10"
+        elif cls.RegWrite_ex_mem and (
+                not cls.Rd_ex_mem.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.equals(cls.Rt):
+            cls.FowardB = "01"
         else:
             cls.FowardB = "00"
 
