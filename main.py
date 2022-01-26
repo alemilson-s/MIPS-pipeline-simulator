@@ -15,8 +15,9 @@ class Arquivo:
 
 if __name__ == "__main__":
     caminho_arquivo = "C:\\Users\\Israel Louback\\Documents\\teste.txt"
+    caminho_arquivoAle = '/home/alemilson/Downloads/a.txt'
 
-    linhas_arquivo = Arquivo.read(caminho_arquivo)
+    linhas_arquivo = Arquivo.read(caminho_arquivoAle)
 
     for linha in linhas_arquivo:
         MemoriaDeInstrucoes.MemoriaDeInstrucoes.inserir_instrucao(linha)

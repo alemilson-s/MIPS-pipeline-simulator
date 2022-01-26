@@ -126,6 +126,7 @@ class Control:
 
     @classmethod
     def zero(cls):
+        cls.Branch = False
         cls.RegDSt = False
         cls.ALUOp1 = False
         cls.ALUOp0 = False
@@ -282,6 +283,60 @@ class HazardDetectionUnit:
     def setMemRead_id_ex(cls, value):
         if type(value) is bool:
             cls.MemRead_id_ex = value
+
+    @classmethod
+    def getRd_id_ex(cls):
+        return cls.Rd_id_ex
+
+    @classmethod
+    def setRd_id_ex(cls, bits):
+        if type(bits) is list:
+            cls.Rd_id_ex = ''
+            for valor in bits:
+                cls.Rd_id_ex = cls.Rd_id_ex + cls.Rd_id_ex.join(valor)
+            cls.Rd_id_ex = cls.Rd_id_ex[::-1]
+
+    @classmethod
+    def getRs_if_id(cls):
+        return cls.Rs_if_id
+
+    @classmethod
+    def setRs_if_id(cls, bits):
+        if type(bits) is list:
+            cls.Rs_if_id = ''
+            for valor in bits:
+                cls.Rs_if_id = cls.Rs_if_id + cls.Rs_if_id.join(valor)
+            cls.Rs_if_id = cls.Rs_if_id[::-1]
+
+    @classmethod
+    def getRt_if_id(cls):
+        return cls.Rt_if_id
+
+    @classmethod
+    def setRt_if_id(cls, bits):
+        if type(bits) is list:
+            cls.Rt_if_id = ''
+            for valor in bits:
+                cls.Rt_if_id = cls.Rt_if_id + cls.Rt_if_id.join(valor)
+            cls.Rt_if_id = cls.Rt_if_id[::-1]
+
+    @classmethod
+    def getPCWrite(cls):
+        return cls.PCWrite
+
+    @classmethod
+    def setPCWrite(cls, value):
+        if type(value) is bool:
+            cls.PCWrite = value
+
+    @classmethod
+    def getIf_id_Write(cls):
+        return cls.if_id_Write
+
+    @classmethod
+    def setIf_id_Write(cls, value):
+        if type(value) is bool:
+            cls.if_id_Write = value
 
     @classmethod
     def run(cls):
