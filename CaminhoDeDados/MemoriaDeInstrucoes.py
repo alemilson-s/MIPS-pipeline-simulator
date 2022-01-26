@@ -118,8 +118,8 @@ class MemoriaDeInstrucoes:
 # MemoriaDeInstrucoes.inserir_instrucao("11111111111111111111111111111111")
 # MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
 # # Exemplo de recuperação de instrução
-# print(MemoriaDeInstrucoes.getInstrucao())
-# MemoriaDeInstrucoes.setAddress("00000000000000000000000000100000")
-# print(MemoriaDeInstrucoes.getInstrucao())
-# MemoriaDeInstrucoes.setAddress("00000000000000000000000010000000")
-# print(MemoriaDeInstrucoes.getInstrucao())
+# print(MemoriaDeInstrucoes.getInstruction())
+# MemoriaDeInstrucoes.setReadAddress("00000000000000000000000000100000")
+# print(MemoriaDeInstrucoes.getInstruction())
+# MemoriaDeInstrucoes.setReadAddress("00000000000000000000000010000000")
+# print(MemoriaDeInstrucoes.getInstruction())

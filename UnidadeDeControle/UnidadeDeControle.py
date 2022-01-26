@@ -359,27 +359,30 @@ class ALUControl:
         alu_op0 = Control.getALUOp0()
         alu_op1 = Control.getALUOp1()
 
-        if (not alu_op0) and (not alu_op1):  # lw/sw
+        if (not alu_op0) and (not alu_op1):  # lw/sw, addi
             cls.ALUControl_input = '0010'
-        elif alu_op0 and (not alu_op1):  # beq
+        elif alu_op0 and (not alu_op1):  # beq, bne
             cls.ALUControl_input = '0110'
         elif (not alu_op0) and alu_op1:  # R type
             aux = Control.getInstruction()
             aux = aux[0:6]
-            function = ''
+            funct = ''
             for indice in range(5, -1, -1):
-                function = function + function.join(aux[indice])
-            if function.__eq__('010000'):  # add
+                funct = funct + funct.join(aux[indice])
+            if funct.__eq__('010000'):  # add
                 cls.ALUControl_input = '0010'
-            elif function.__eq__('100010'):  # sub
+            elif funct.__eq__('100010'):  # sub
                 cls.ALUControl_input = '0110'
-            elif function.__eq__('100100'):  # and
+            elif funct.__eq__('100100'):  # and
                 cls.ALUControl_input = '0000'
-            elif function.__eq__('100101'):  # or
+            elif funct.__eq__('100101'):  # or
                 cls.ALUControl_input = '0001'
-            elif function.__eq__('101010'):  # slt
+            elif funct.__eq__('101010'):  # slt
                 cls.ALUControl_input = '0111'
-            elif function.__eq__('001000'):  # jr
-                pass
-            elif function.__eq__('000000'):  # sll
-                pass
+            elif funct.__eq__('001000'):  # jr
+                cls.ALUControl_input = '1010'
+            elif funct.__eq__('000000'):  # sll
+                cls.ALUControl_input = '1111'
+
+
+Control.setInstruction(list("00000000000000000000000000100010"))

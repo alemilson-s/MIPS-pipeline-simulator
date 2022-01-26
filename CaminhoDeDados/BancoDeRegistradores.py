@@ -1833,9 +1833,8 @@ class ra:
 
         return cls.id
 
-
-BancoDeRegistradores.setReadRegister1(list("01000"))
-BancoDeRegistradores.setWriteRegister("00010")
-BancoDeRegistradores.setWriteData("11110000100000000000000000000000")
-BancoDeRegistradores.write()
-print(v0.get())
+# BancoDeRegistradores.setReadRegister1(list("01000"))
+# BancoDeRegistradores.setWriteRegister("00010")
+# BancoDeRegistradores.setWriteData("11110000100000000000000000000000")
+# BancoDeRegistradores.write()
+# print(v0.get())
