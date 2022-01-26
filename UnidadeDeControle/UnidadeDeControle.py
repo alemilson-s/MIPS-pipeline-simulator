@@ -141,9 +141,9 @@ class FowardingUnit:
     Rt = None  # Número do registrador Rt vindo de ID/EX
     Rd_ex_mem = None  # Número do registrador destino contido em EX/MEM
     Rd_mem_wb = None  # Número do registrador destino contido em MEM/WB
-    RegWrite_ex_mem = None  # Sinal de controle indicando se instrução na etapa EX/MEM
+    RegWrite_ex_mem = False  # Sinal de controle indicando se instrução na etapa EX/MEM
     # faz escrita no banco de registradores
-    RegWrite_mem_wb = None  # Sinal de controle indicando se instrução na etapa MEM/WB
+    RegWrite_mem_wb = False  # Sinal de controle indicando se instrução na etapa MEM/WB
     # faz escrita no banco de registradores
 
     FowardA = None  # Sinal de controle que indica qual operando usar na ALU como primeiro operando
@@ -172,6 +172,74 @@ class FowardingUnit:
             cls.Rs = cls.Rs[::-1]
         else:
             print("Erro, espera-se receber uma lista como parâmetro -> setRs")
+
+    @classmethod
+    def getRt(cls):
+        return cls.Rt
+
+    @classmethod
+    def setRt(cls, bits):
+        if type(bits) is list:
+            cls.Rt = ''
+            for valor in bits:
+                cls.Rt = cls.Rt + cls.Rt.join(valor)
+            cls.Rt = cls.Rt[::-1]
+        else:
+            print("Erro, espera-se receber uma lista como parâmetro -> setRt")
+
+    @classmethod
+    def getRd_ex_mem(cls):
+        return cls.Rd_ex_mem
+
+    @classmethod
+    def setRd_ex_mem(cls, bits):
+        if type(bits) is list:
+            cls.Rd_ex_mem = ''
+            for valor in bits:
+                cls.Rd_ex_mem = cls.Rd_ex_mem + cls.Rd_ex_mem.join(valor)
+            cls.Rd_ex_mem = cls.Rd_ex_mem[::-1]
+        else:
+            print("Erro, espera-se receber uma lista como parâmetro -> setRd_ex_mem")
+
+    @classmethod
+    def getRd_mem_wb(cls):
+        return cls.Rd_mem_wb
+
+    @classmethod
+    def setRd_mem_wb(cls, bits):
+        if type(bits) is list:
+            cls.Rd_mem_wb = ''
+            for valor in bits:
+                cls.Rd_mem_wb = cls.Rd_mem_wb + cls.Rd_mem_wb.join(valor)
+            cls.Rd_mem_wb = cls.Rd_mem_wb[::-1]
+        else:
+            print("Erro, espera-se receber uma lista como parâmetro -> setRd_mem_wb")
+
+    @classmethod
+    def getRegWrite_ex_mem(cls):
+        return cls.RegWrite_ex_mem
+
+    @classmethod
+    def setRegWrite_ex_mem(cls, value):
+        if type(value) is bool:
+            cls.RegWrite_ex_mem = value
+
+    @classmethod
+    def getRegWrite_mem_wb(cls):
+        return cls.RegWrite_mem_wb
+
+    @classmethod
+    def setRegWrite_mem_wb(cls, value):
+        if type(value) is bool:
+            cls.RegWrite_mem_wb = value
+
+    @classmethod
+    def getFowardA(cls):
+        return cls.FowardA
+
+    @classmethod
+    def getFowardB(cls):
+        return cls.FowardB
 
     @classmethod
     def run(cls):
@@ -205,6 +273,15 @@ class HazardDetectionUnit:
     Rt_if_id = None  # Vem da instrução lida de IF/ID, bits [16-20] -> Número do registrador
     PCWrite = None  # Sinal para indicar se PC deve ser escrito ou não
     if_id_Write = None  # Sinal para indicar se IF/ID deve ser escrito ou não
+
+    @classmethod
+    def getMemRead_id_ex(cls):
+        return cls.MemRead_id_ex
+
+    @classmethod
+    def setMemRead_id_ex(cls, value):
+        if type(value) is bool:
+            cls.MemRead_id_ex = value
 
     @classmethod
     def run(cls):
