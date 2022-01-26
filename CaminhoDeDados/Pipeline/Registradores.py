@@ -40,6 +40,7 @@ class id_ex:
     ALUOp0 = None
     ALUSrc = None
     # Linas de controledo estágio de acesso à memória
+    Branch = False
     MemRead = None
     MemWrite = None
     # Linhas de controle do estágio de escrita do resultado
@@ -226,6 +227,8 @@ class id_ex:
 
 class ex_mem:
     # Linas de controledo estágio de acesso à memória
+    Zero = False
+    Branch = False
     MemRead = None
     MemWrite = None
     # Linhas de controle do estágio de escrita do resultado
@@ -235,6 +238,15 @@ class ex_mem:
     mux_1 = None
     mux_2 = None
     alu = None
+
+    @classmethod
+    def setZero(cls, value):
+        if type(value) is bool:
+            cls.Zero = value
+
+    @classmethod
+    def getZero(cls):
+        return cls.Zero
 
     @classmethod
     def setMemRead(cls, bit):

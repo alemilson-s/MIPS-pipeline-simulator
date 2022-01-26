@@ -6,6 +6,7 @@ class Alu:
     data_2 = None
     ALUControl_input: str = None
     ALUOutput = None
+    Zero = False
 
     @classmethod
     def getData_1(cls):
@@ -32,6 +33,10 @@ class Alu:
     @classmethod
     def getALUOutput(cls):
         return cls.ALUOutput
+
+    @classmethod
+    def zeroActivate(cls):
+        return cls.Zero
 
     @classmethod
     def soma(cls, alu_1: str, alu_2: str):
@@ -122,6 +127,10 @@ class Alu:
             for valor in cls.ALUOutput:
                 aux.append(valor)
             cls.ALUOutput = aux.copy()
+            cls.Zero = True
+            for valor in cls.ALUOutput:
+                if valor.__eq__('1'):
+                    cls.Zero = False
         elif cls.ALUControl_input.__eq__('0000'):  # and
             aux1 = list(alu_1)
             aux2 = list(alu_2)

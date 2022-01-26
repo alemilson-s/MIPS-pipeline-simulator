@@ -2,13 +2,13 @@ from CaminhoDeDados import BancoDeRegistradores
 
 
 class Control:
-    Branch = False
     # Linhas de controle do estágio de execução/cálculo de endereço
     RegDSt = False
     ALUOp1 = False
     ALUOp0 = False
     ALUSrc = False
     # Linas de controledo estágio de acesso à memória
+    Branch = False
     MemRead = False
     MemWrite = False
     # Linhas de controle do estágio de escrita do resultado
@@ -383,6 +383,3 @@ class ALUControl:
                 cls.ALUControl_input = '1010'
             elif funct.__eq__('000000'):  # sll
                 cls.ALUControl_input = '1111'
-
-
-Control.setInstruction(list("00000000000000000000000000100010"))
