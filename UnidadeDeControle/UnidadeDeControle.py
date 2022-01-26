@@ -2,6 +2,7 @@ from CaminhoDeDados import BancoDeRegistradores
 
 
 class Control:
+    Branch = False
     # Linhas de controle do estágio de execução/cálculo de endereço
     RegDSt = False
     ALUOp1 = False
@@ -17,8 +18,111 @@ class Control:
     instruction = None
 
     @classmethod
-    def run(cls, bits):
-        pass
+    def getRegDSt(cls):
+        return cls.RegDSt
+
+    @classmethod
+    def getALUOp1(cls):
+        return cls.ALUOp1
+
+    @classmethod
+    def getALUOp0(cls):
+        return cls.ALUOp0
+
+    @classmethod
+    def getALUSrc(cls):
+        return cls.ALUSrc
+
+    @classmethod
+    def getMemRead(cls):
+        return cls.MemRead
+
+    @classmethod
+    def getMemWrite(cls):
+        return cls.MemWrite
+
+    @classmethod
+    def getRegWrite(cls):
+        return cls.RegWrite
+
+    @classmethod
+    def getMemtoReg(cls):
+        return cls.MemtoReg
+
+    @classmethod
+    def setInstruction(cls, bits: list):
+        cls.instruction = bits.copy()
+
+    @classmethod
+    def getInstruction(cls):
+        return cls.instruction
+
+    @classmethod
+    def run(cls):
+        aux = cls.instruction[26:32]
+        op = ''
+        for valor in aux:
+            op = op + op.join(valor)
+        op = op[::-1]
+
+        if op.__eq__('000000'):  # add, sub, and, or, slt, sll, jr -> R type
+            cls.RegDSt = True
+            cls.ALUOp1 = True
+            cls.ALUOp0 = False
+            cls.ALUSrc = False
+            cls.Branch = False
+            cls.MemRead = False
+            cls.MemWrite = False
+            cls.RegWrite = True
+            cls.MemtoReg = True
+        elif op.__eq__('001000'):  # addi
+            cls.RegDSt = False  # seleciona rt como registrador destino
+            cls.ALUOp1 = False
+            cls.ALUOp0 = False
+            cls.ALUSrc = True  # seleciona bits [0-15] para somar com rs na ALU
+            cls.Branch = False  # não fazer desvio
+            cls.MemRead = False  # não fazer leitura na memória
+            cls.MemWrite = False  # não fazer escrita na memória
+            cls.RegWrite = True  # fazer escrita no banco de registradores
+            cls.MemtoReg = True  # selecionar valor calculado na ALU
+        elif op.__eq__('100011'):  # lw
+            cls.RegDSt = False  # seleciona rt como registrador destino
+            cls.ALUOp1 = False
+            cls.ALUOp0 = False
+            cls.ALUSrc = True  # selecioina bits [0-15] para somar com rs na ALU
+            cls.Branch = False  # não fazer desvio
+            cls.MemRead = True  # fazer leitura na memória
+            cls.MemWrite = False  # não fazer escrita na memória
+            cls.RegWrite = True  # fazer escita no banco de registradores
+            cls.MemtoReg = False  # sleciona valor lido da memória
+        elif op.__eq__('101011'):  # sw
+            cls.ALUOp1 = False
+            cls.ALUOp0 = False
+            cls.ALUSrc = True  # seleciona bits [0-15] para somar com rs na ALU
+            cls.Branch = False  # não fazer desvio
+            cls.MemRead = False  # não fazer leitura na memória
+            cls.MemWrite = True  # fazer escrita na memória
+            cls.RegWrite = False  # não fazer escrita no banco de registradores
+        elif op.__eq__('000100'):  # beq
+            cls.ALUOp1 = False
+            cls.ALUOp0 = True
+            cls.ALUSrc = False  # seleciona registrador rt que veio do banco de registradores para somar na ALU
+            cls.Branch = True  # fazer fesvio
+            cls.MemRead = False  # não fazer leitura na memória
+            cls.MemWrite = False  # não fazer escrita na memória
+            cls.RegWrite = False  # não fazer escrita no banco de registradores
+        elif op.__eq__('000101'):  # bne
+            cls.ALUOp1 = False
+            cls.ALUOp0 = True
+            cls.ALUSrc = False  # seleciona registrador rt que veio do banco de registradores para somar na ALU
+            cls.Branch = True  # fazer fesvio
+            cls.MemRead = False  # não fazer leitura na memória
+            cls.MemWrite = False  # não fazer escrita na memória
+            cls.RegWrite = False  # não fazer escrita no banco de registradores
+        elif op.__eq__('000010'):  # j:
+            pass
+        elif op.__eq__('000011'):  # jal
+            pass
 
     @classmethod
     def zero(cls):
@@ -56,24 +160,38 @@ class FowardingUnit:
     """
 
     @classmethod
+    def getRs(cls):
+        return cls.Rs
+
+    @classmethod
+    def setRs(cls, bits):
+        if type(bits) is list:
+            cls.Rs = ''
+            for valor in bits:
+                cls.Rs = cls.Rs + cls.Rs.join(valor)
+            cls.Rs = cls.Rs[::-1]
+        else:
+            print("Erro, espera-se receber uma lista como parâmetro -> setRs")
+
+    @classmethod
     def run(cls):
         if cls.RegWrite_mem_wb and (
-                not cls.Rd_mem_wb.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_mem_wb.equals(cls.Rs) and (
-                not cls.Rd_ex_mem.equals(cls.Rs)):
+                not cls.Rd_mem_wb.__eq__(BancoDeRegistradores.zero.get_id())) and cls.Rd_mem_wb.__eq__(cls.Rs) and (
+                not cls.Rd_ex_mem.__eq__(cls.Rs)):
             cls.FowardA = "10"
         elif cls.RegWrite_ex_mem and (
-                not cls.Rd_ex_mem.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.equals(cls.Rs):
+                not cls.Rd_ex_mem.__eq__(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.__eq__(cls.Rs):
             cls.FowardA = "01"
         else:
             cls.FowardA = "00"
 
         if cls.RegWrite_mem_wb and (
-                not cls.Rd_mem_wb.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_mem_wb.equals(cls.Rt) and (
-                not cls.Rd_ex_mem.equals(cls.Rt)
+                not cls.Rd_mem_wb.__eq__(BancoDeRegistradores.zero.get_id())) and cls.Rd_mem_wb.__eq__(cls.Rt) and (
+                not cls.Rd_ex_mem.__eq__(cls.Rt)
         ):
             cls.FowardB = "10"
         elif cls.RegWrite_ex_mem and (
-                not cls.Rd_ex_mem.equals(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.equals(cls.Rt):
+                not cls.Rd_ex_mem.__eq__(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.__eq__(cls.Rt):
             cls.FowardB = "01"
         else:
             cls.FowardB = "00"
@@ -90,7 +208,46 @@ class HazardDetectionUnit:
 
     @classmethod
     def run(cls):
-        if cls.MemRead_id_ex and (cls.Rd_id_ex.equals(cls.Rs_if_id) or cls.Rd_id_ex.equals(cls.Rt_if_id)):
+        if cls.MemRead_id_ex and (cls.Rd_id_ex.__eq__(cls.Rs_if_id) or cls.Rd_id_ex.__eq__(cls.Rt_if_id)):
             cls.PCWrite = False
             cls.if_id_Write = False
             Control.zero()
+
+
+class ALUControl:
+    ALUControl_input = None
+
+    #   add, sub, and, or, slt, sll, addi, lw, sw, beq, bne, j, jr, jal.
+    @classmethod
+    def getALUControl_input(cls):
+        return cls.ALUControl_input
+
+    @classmethod
+    def run(cls):
+        alu_op0 = Control.getALUOp0()
+        alu_op1 = Control.getALUOp1()
+
+        if (not alu_op0) and (not alu_op1):  # lw/sw
+            cls.ALUControl_input = '0010'
+        elif alu_op0 and (not alu_op1):  # beq
+            cls.ALUControl_input = '0110'
+        elif (not alu_op0) and alu_op1:  # R type
+            aux = Control.getInstruction()
+            aux = aux[0:6]
+            function = ''
+            for indice in range(5, -1, -1):
+                function = function + function.join(aux[indice])
+            if function.__eq__('010000'):  # add
+                cls.ALUControl_input = '0010'
+            elif function.__eq__('100010'):  # sub
+                cls.ALUControl_input = '0110'
+            elif function.__eq__('100100'):  # and
+                cls.ALUControl_input = '0000'
+            elif function.__eq__('100101'):  # or
+                cls.ALUControl_input = '0001'
+            elif function.__eq__('101010'):  # slt
+                cls.ALUControl_input = '0111'
+            elif function.__eq__('001000'):  # jr
+                pass
+            elif function.__eq__('000000'):  # sll
+                pass
