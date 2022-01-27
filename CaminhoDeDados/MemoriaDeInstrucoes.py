@@ -94,7 +94,7 @@ class MemoriaDeInstrucoes:
     @classmethod
     def set_read_address(cls, address):
         if type(address) == str and len(address) == 32:
-            cls.readAddress = str(address)
+            cls.readAddress = address
         elif len(address) == 32:
             cls.address = ""
             for valor in address:
@@ -107,19 +107,20 @@ class MemoriaDeInstrucoes:
         """
         Método para retornar uma instrução dado seu endereço
         """
-        cls.instruction = cls.instrucoes[cls.readAddress].getInstrucao()
+        cls.instruction = cls.instrucoes[cls.readAddress].get_instrucao()
         return cls.instruction
 
-# # Exemplos de utilização da inserção de instruções
-# MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
-# MemoriaDeInstrucoes.inserir_instrucao("11110011010000000101010101010111")
-# MemoriaDeInstrucoes.inserir_instrucao("00000010001100100100000000100000")
-# MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
-# MemoriaDeInstrucoes.inserir_instrucao("11111111111111111111111111111111")
-# MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
-# # Exemplo de recuperação de instrução
-# print(MemoriaDeInstrucoes.getInstruction())
-# MemoriaDeInstrucoes.setReadAddress("00000000000000000000000000100000")
-# print(MemoriaDeInstrucoes.getInstruction())
-# MemoriaDeInstrucoes.setReadAddress("00000000000000000000000010000000")
-# print(MemoriaDeInstrucoes.getInstruction())
+
+# Exemplos de utilização da inserção de instruções
+MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
+MemoriaDeInstrucoes.inserir_instrucao("11110011010000000101010101010111")
+MemoriaDeInstrucoes.inserir_instrucao("00000010001100100100000000100000")
+MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
+MemoriaDeInstrucoes.inserir_instrucao("11111111111111111111111111111111")
+MemoriaDeInstrucoes.inserir_instrucao("00000011010000000101010101010111")
+# Exemplo de recuperação de instrução
+print(MemoriaDeInstrucoes.get_instruction())
+MemoriaDeInstrucoes.set_read_address("00000000000000000000000000100000")
+print(MemoriaDeInstrucoes.get_instruction())
+MemoriaDeInstrucoes.set_read_address("00000000000000000000000010000000")
+print(MemoriaDeInstrucoes.get_instruction())

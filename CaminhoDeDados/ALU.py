@@ -30,7 +30,7 @@ class Alu:
     def set_alu_control_input(cls):
         """
         Atualiza os 4 bits que indicam a operação a ser feita na ALU
-        :return: Sem retorno
+        Sem retorno
         """
         cls.ALUControl_input = UnidadeDeControle.ALUControl.get_alu_control_input()
 
@@ -42,7 +42,7 @@ class Alu:
     def zero_is_activate(cls):
         """
         Retorna se o resultado da operação feita ALU é igual a zero
-        :return: Atributo Zero da ALU
+        Atributo Zero da ALU
         """
         return cls.Zero
 
