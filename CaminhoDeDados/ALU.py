@@ -121,7 +121,7 @@ class Alu:
                     valor = '1'
                 elif inverter and valor.__eq__('1'):
                     valor = '0'
-                alu_2[indice] = valor
+                aux_alu2.insert(indice, valor)
             alu_2 = ''
             for valor in aux_alu2:
                 alu_2 += alu_2.join(valor)
@@ -141,9 +141,9 @@ class Alu:
             result = []
             for indice in range(32):
                 if aux1[indice].__eq__('1') and aux2[indice].__eq__('1'):
-                    result[indice] = '1'
+                    result.insert(indice, '1')
                 else:
-                    result[indice] = '0'
+                    result.insert(indice, '0')
             cls.ALUOutput = result.copy()
         elif cls.ALUControl_input.__eq__('0001'):  # or
             aux1 = list(alu_1)
@@ -151,9 +151,9 @@ class Alu:
             result = []
             for indice in range(32):
                 if aux1[indice].__eq__('1') or aux2[indice].__eq__('1'):
-                    result[indice] = '1'
+                    result.insert(indice, '1')
                 else:
-                    result[indice] = '0'
+                    result.insert(indice, '0')
             cls.ALUOutput = result.copy()
         elif cls.ALUControl_input.__eq__('0111'):  # slt
             soma_1 = 0
@@ -179,3 +179,4 @@ class Alu:
             for i in range(n):
                 cls.data_1.pop()
                 cls.data_1.insert(0, '0')
+            cls.ALUOutput = cls.data_1.copy()
