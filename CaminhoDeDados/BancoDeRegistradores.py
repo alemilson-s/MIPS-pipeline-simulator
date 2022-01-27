@@ -259,7 +259,7 @@ class Zero:
     def get_id(cls):
         """
         Retorna o campo 'id' do registrador
-        :return: id -> número do registrador
+        ‘id’ → número do registrador
         """
         if not cls.inicializado:
             cls.inicializar()
@@ -288,11 +288,10 @@ class V0:
     @classmethod
     def set_bits(cls, bit_inicial, bit_final, sequencia_de_bits):
         """
-        Método para alterar os valores do intervalo fechado de bit_inicial a bit_final
-        :param bit_inicial: Representa a posição inicial do bit ao qual iremos percorrer
-        :param bit_final: Representa a posição final do bit ao qual iremos percorrer
-        :param sequencia_de_bits: Valores ao qual serão inseridos na lista de bits
-        :return: Função sem retorno
+        Método para alterar os valores do intervalo fechado de bit inicial a bit final
+        bit inicial: Representa a posição inicial do bit ao qual iremos percorrer
+        bit final: Representa a posição final do bit ao qual iremos percorrer
+        sequencia de bits: Valores ao qual serão inseridos na lista de bits
         """
         if not cls.inicializado:
             cls.inicializar()
@@ -308,10 +307,10 @@ class V0:
     @classmethod
     def get_bits(cls, bit_inicial, bit_final):
         """
-        Método para retornar os valores do intervalo fechado de bit_inicial a bit_final
-        :param bit_inicial: Representa a posição inicial do bit ao qual iremos percorrer
-        :param bit_final: Representa a posição final do bit ao qual iremos percorrer
-        :return: bits contido no intervalo fechado -> [bit_inicial, bit_final]
+        Método para retornar os valores do intervalo fechado de bit inicial a bit final
+        bit inicial: Representa a posição inicial do bit ao qual iremos percorrer
+        bit final: Representa a posição final do bit ao qual iremos percorrer
+        bits contidos no intervalo fechado → [bit inicial, bit final]
         """
         if not cls.inicializado:
             cls.inicializar()
@@ -322,8 +321,8 @@ class V0:
     def set(cls, bits):
         """
         Método para alterar os 32 bits da lista(bits) representando os bits do registrador
-        :param bits: String ou lista representando 32 bits
-        :return: Não há retorno
+        bits: String ou lista representando 32 bits
+        Não há retorno
         """
         if not cls.inicializado:
             cls.inicializar()
@@ -340,8 +339,8 @@ class V0:
     @classmethod
     def get(cls):
         """
-        Método para retornar os 32 bits contido no registrador
-        :return: bits(lista que representa os 32 bits do registrador)
+        Método para retornar os 32 bits contidos no registrador
+        'bits'(lista que representa os 32 bits do registrador)
         """
         if not cls.inicializado:
             cls.inicializar()
@@ -352,7 +351,7 @@ class V0:
     def get_id(cls):
         """
         Retorna o campo 'id' do registrador
-        :return: id -> número do registrador
+        ‘id’ → número do registrador
         """
         if not cls.inicializado:
             cls.inicializar()

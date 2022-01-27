@@ -96,18 +96,18 @@ class Alu:
 
     @classmethod
     def run(cls):
-        alu_1 = ''  # Guarda conversão do primeiro operando da ALU em string
+        alu_1 = ''  # Guarda conversão do primeiro operando da ALU em uma 'string'
         for valor in cls.data_1:
             alu_1 = alu_1 + alu_1.join(valor)
 
-        alu_2 = ''  # Guarda conversão do segundo operando da ALU em string
+        alu_2 = ''  # Guarda conversão do segundo operando da ALU em uma ‘string’
         for valor in cls.data_2:
             alu_2 = alu_2 + alu_2.join(valor)
 
         if cls.ALUControl_input.__eq__('0010'):  # soma
             alu_1 = alu_1[::-1]  # inversão feita para facilitar soma
             alu_2 = alu_2[::-1]  # inversão feita para facilitar soma
-            cls.ALUOutput = Alu.soma(alu_1, alu_2)  # guardando resultado da soma em formato string
+            cls.ALUOutput = Alu.soma(alu_1, alu_2)  # guardando resultado da soma em formato 'string'
             cls.ALUOutput = cls.ALUOutput[::-1]  # inversão para voltar ao normal
             cls.ALUOutput = list(cls.ALUOutput)  # convertendo em lista
         elif cls.ALUControl_input.__eq__('0110'):  # subtração
