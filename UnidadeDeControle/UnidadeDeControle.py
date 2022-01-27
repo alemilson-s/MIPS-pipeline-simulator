@@ -18,43 +18,43 @@ class Control:
     instruction = None
 
     @classmethod
-    def getRegDSt(cls):
+    def get_reg_dst(cls):
         return cls.RegDSt
 
     @classmethod
-    def getALUOp1(cls):
+    def get_alu_op_1(cls):
         return cls.ALUOp1
 
     @classmethod
-    def getALUOp0(cls):
+    def get_alu_op_0(cls):
         return cls.ALUOp0
 
     @classmethod
-    def getALUSrc(cls):
+    def get_alu_src(cls):
         return cls.ALUSrc
 
     @classmethod
-    def getMemRead(cls):
+    def get_mem_read(cls):
         return cls.MemRead
 
     @classmethod
-    def getMemWrite(cls):
+    def get_mem_write(cls):
         return cls.MemWrite
 
     @classmethod
-    def getRegWrite(cls):
+    def get_reg_write(cls):
         return cls.RegWrite
 
     @classmethod
-    def getMemtoReg(cls):
+    def get_memto_reg(cls):
         return cls.MemtoReg
 
     @classmethod
-    def setInstruction(cls, bits: list):
+    def set_instruction(cls, bits: list):
         cls.instruction = bits.copy()
 
     @classmethod
-    def getInstruction(cls):
+    def get_instruction(cls):
         return cls.instruction
 
     @classmethod
@@ -161,11 +161,11 @@ class FowardingUnit:
     """
 
     @classmethod
-    def getRs(cls):
+    def get_rs(cls):
         return cls.Rs
 
     @classmethod
-    def setRs(cls, bits):
+    def set_rs(cls, bits):
         if type(bits) is list:
             cls.Rs = ''
             for valor in bits:
@@ -175,11 +175,11 @@ class FowardingUnit:
             print("Erro, espera-se receber uma lista como parâmetro -> setRs")
 
     @classmethod
-    def getRt(cls):
+    def get_rt(cls):
         return cls.Rt
 
     @classmethod
-    def setRt(cls, bits):
+    def set_rt(cls, bits):
         if type(bits) is list:
             cls.Rt = ''
             for valor in bits:
@@ -189,11 +189,11 @@ class FowardingUnit:
             print("Erro, espera-se receber uma lista como parâmetro -> setRt")
 
     @classmethod
-    def getRd_ex_mem(cls):
+    def get_rd_ex_mem(cls):
         return cls.Rd_ex_mem
 
     @classmethod
-    def setRd_ex_mem(cls, bits):
+    def set_rd_ex_mem(cls, bits):
         if type(bits) is list:
             cls.Rd_ex_mem = ''
             for valor in bits:
@@ -203,11 +203,11 @@ class FowardingUnit:
             print("Erro, espera-se receber uma lista como parâmetro -> setRd_ex_mem")
 
     @classmethod
-    def getRd_mem_wb(cls):
+    def get_rd_mem_wb(cls):
         return cls.Rd_mem_wb
 
     @classmethod
-    def setRd_mem_wb(cls, bits):
+    def set_rd_mem_wb(cls, bits):
         if type(bits) is list:
             cls.Rd_mem_wb = ''
             for valor in bits:
@@ -217,50 +217,50 @@ class FowardingUnit:
             print("Erro, espera-se receber uma lista como parâmetro -> setRd_mem_wb")
 
     @classmethod
-    def getRegWrite_ex_mem(cls):
+    def get_reg_write_ex_mem(cls):
         return cls.RegWrite_ex_mem
 
     @classmethod
-    def setRegWrite_ex_mem(cls, value):
+    def set_reg_write_ex_mem(cls, value):
         if type(value) is bool:
             cls.RegWrite_ex_mem = value
 
     @classmethod
-    def getRegWrite_mem_wb(cls):
+    def get_reg_write_mem_wb(cls):
         return cls.RegWrite_mem_wb
 
     @classmethod
-    def setRegWrite_mem_wb(cls, value):
+    def set_reg_write_mem_wb(cls, value):
         if type(value) is bool:
             cls.RegWrite_mem_wb = value
 
     @classmethod
-    def getFowardA(cls):
+    def get_foward_a(cls):
         return cls.FowardA
 
     @classmethod
-    def getFowardB(cls):
+    def get_foward_b(cls):
         return cls.FowardB
 
     @classmethod
     def run(cls):
         if cls.RegWrite_mem_wb and (
-                not cls.Rd_mem_wb.__eq__(BancoDeRegistradores.zero.get_id())) and cls.Rd_mem_wb.__eq__(cls.Rs) and (
+                not cls.Rd_mem_wb.__eq__(BancoDeRegistradores.Zero.get_id())) and cls.Rd_mem_wb.__eq__(cls.Rs) and (
                 not cls.Rd_ex_mem.__eq__(cls.Rs)):
             cls.FowardA = "10"
         elif cls.RegWrite_ex_mem and (
-                not cls.Rd_ex_mem.__eq__(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.__eq__(cls.Rs):
+                not cls.Rd_ex_mem.__eq__(BancoDeRegistradores.Zero.get_id())) and cls.Rd_ex_mem.__eq__(cls.Rs):
             cls.FowardA = "01"
         else:
             cls.FowardA = "00"
 
         if cls.RegWrite_mem_wb and (
-                not cls.Rd_mem_wb.__eq__(BancoDeRegistradores.zero.get_id())) and cls.Rd_mem_wb.__eq__(cls.Rt) and (
+                not cls.Rd_mem_wb.__eq__(BancoDeRegistradores.Zero.get_id())) and cls.Rd_mem_wb.__eq__(cls.Rt) and (
                 not cls.Rd_ex_mem.__eq__(cls.Rt)
         ):
             cls.FowardB = "10"
         elif cls.RegWrite_ex_mem and (
-                not cls.Rd_ex_mem.__eq__(BancoDeRegistradores.zero.get_id())) and cls.Rd_ex_mem.__eq__(cls.Rt):
+                not cls.Rd_ex_mem.__eq__(BancoDeRegistradores.Zero.get_id())) and cls.Rd_ex_mem.__eq__(cls.Rt):
             cls.FowardB = "01"
         else:
             cls.FowardB = "00"
@@ -276,20 +276,20 @@ class HazardDetectionUnit:
     if_id_Write = None  # Sinal para indicar se IF/ID deve ser escrito ou não
 
     @classmethod
-    def getMemRead_id_ex(cls):
+    def get_mem_read_id_ex(cls):
         return cls.MemRead_id_ex
 
     @classmethod
-    def setMemRead_id_ex(cls, value):
+    def set_mem_read_id_ex(cls, value):
         if type(value) is bool:
             cls.MemRead_id_ex = value
 
     @classmethod
-    def getRd_id_ex(cls):
+    def get_rd_id_ex(cls):
         return cls.Rd_id_ex
 
     @classmethod
-    def setRd_id_ex(cls, bits):
+    def set_rd_id_ex(cls, bits):
         if type(bits) is list:
             cls.Rd_id_ex = ''
             for valor in bits:
@@ -297,11 +297,11 @@ class HazardDetectionUnit:
             cls.Rd_id_ex = cls.Rd_id_ex[::-1]
 
     @classmethod
-    def getRs_if_id(cls):
+    def get_rs_if_id(cls):
         return cls.Rs_if_id
 
     @classmethod
-    def setRs_if_id(cls, bits):
+    def set_rs_if_id(cls, bits):
         if type(bits) is list:
             cls.Rs_if_id = ''
             for valor in bits:
@@ -309,11 +309,11 @@ class HazardDetectionUnit:
             cls.Rs_if_id = cls.Rs_if_id[::-1]
 
     @classmethod
-    def getRt_if_id(cls):
+    def get_rt_if_id(cls):
         return cls.Rt_if_id
 
     @classmethod
-    def setRt_if_id(cls, bits):
+    def set_rt_if_id(cls, bits):
         if type(bits) is list:
             cls.Rt_if_id = ''
             for valor in bits:
@@ -321,20 +321,20 @@ class HazardDetectionUnit:
             cls.Rt_if_id = cls.Rt_if_id[::-1]
 
     @classmethod
-    def getPCWrite(cls):
+    def get_pc_write(cls):
         return cls.PCWrite
 
     @classmethod
-    def setPCWrite(cls, value):
+    def set_pc_write(cls, value):
         if type(value) is bool:
             cls.PCWrite = value
 
     @classmethod
-    def getIf_id_Write(cls):
+    def get_if_id_write(cls):
         return cls.if_id_Write
 
     @classmethod
-    def setIf_id_Write(cls, value):
+    def set_if_id_write(cls, value):
         if type(value) is bool:
             cls.if_id_Write = value
 
@@ -347,39 +347,39 @@ class HazardDetectionUnit:
 
 
 class ALUControl:
-    ALUControl_input = None
+    alu_control_input = None
 
     #   add, sub, and, or, slt, sll, addi, lw, sw, beq, bne, j, jr, jal.
     @classmethod
-    def getALUControl_input(cls):
-        return cls.ALUControl_input
+    def get_alu_control_input(cls):
+        return cls.alu_control_input
 
     @classmethod
     def run(cls):
-        alu_op0 = Control.getALUOp0()
-        alu_op1 = Control.getALUOp1()
+        alu_op0 = Control.get_alu_op_0()
+        alu_op1 = Control.get_alu_op_1()
 
         if (not alu_op0) and (not alu_op1):  # lw/sw, addi
-            cls.ALUControl_input = '0010'
+            cls.alu_control_input = '0010'
         elif alu_op0 and (not alu_op1):  # beq, bne
-            cls.ALUControl_input = '0110'
+            cls.alu_control_input = '0110'
         elif (not alu_op0) and alu_op1:  # R type
-            aux = Control.getInstruction()
+            aux = Control.get_instruction()
             aux = aux[0:6]
             funct = ''
             for indice in range(5, -1, -1):
                 funct = funct + funct.join(aux[indice])
             if funct.__eq__('010000'):  # add
-                cls.ALUControl_input = '0010'
+                cls.alu_control_input = '0010'
             elif funct.__eq__('100010'):  # sub
-                cls.ALUControl_input = '0110'
+                cls.alu_control_input = '0110'
             elif funct.__eq__('100100'):  # and
-                cls.ALUControl_input = '0000'
+                cls.alu_control_input = '0000'
             elif funct.__eq__('100101'):  # or
-                cls.ALUControl_input = '0001'
+                cls.alu_control_input = '0001'
             elif funct.__eq__('101010'):  # slt
-                cls.ALUControl_input = '0111'
+                cls.alu_control_input = '0111'
             elif funct.__eq__('001000'):  # jr
-                cls.ALUControl_input = '1010'
+                cls.alu_control_input = '1010'
             elif funct.__eq__('000000'):  # sll
-                cls.ALUControl_input = '1111'
+                cls.alu_control_input = '1111'

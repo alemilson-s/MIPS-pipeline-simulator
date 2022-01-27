@@ -1,9 +1,9 @@
-class if_id:
-    pcMore_4 = None
+class IFID:
+    pc_more_4 = None
     instruction = None
 
     @classmethod
-    def setInstruction(cls, bits):
+    def set_instruction(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.instruction = bits.copy()
         elif len(bits) == 32:
@@ -14,26 +14,26 @@ class if_id:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getInstruction(cls):
+    def get_instruction(cls):
         return cls.instruction
 
     @classmethod
-    def setPcMore_4(cls, bits):
+    def set_pc_more_4(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.pcMore_4 = bits.copy()
+            cls.pc_more_4 = bits.copy()
         elif len(bits) == 32:
-            cls.pcMore_4.clear()
+            cls.pc_more_4.clear()
             for valor in bits:
-                cls.pcMore_4.insert(0, valor)
+                cls.pc_more_4.insert(0, valor)
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getPcMore_4(cls):
-        return cls.pcMore_4
+    def get_pc_more_4(cls):
+        return cls.pc_more_4
 
 
-class id_ex:
+class IDEX:
     # Linhas de controle do estágio de execução/cálculo de endereço
     RegDSt = None
     ALUOp1 = None
@@ -56,71 +56,71 @@ class id_ex:
     readRegister_2 = None
 
     @classmethod
-    def setRegDSt(cls, bit):
+    def set_reg_dst(cls, bit):
         cls.RegDSt = bit
 
     @classmethod
-    def getRegDSt(cls):
+    def get_reg_dst(cls):
         return cls.RegDSt
 
     @classmethod
-    def setALUOp1(cls, bit):
+    def set_alu_op_1(cls, bit):
         cls.ALUOp1 = bit
 
     @classmethod
-    def getALUOp1(cls):
+    def get_alu_op_1(cls):
         return cls.ALUOp1
 
     @classmethod
-    def setALUOp0(cls, bit):
+    def set_alu_op_0(cls, bit):
         cls.ALUOp0 = bit
 
     @classmethod
-    def getALUOp0(cls):
+    def get_alu_op_0(cls):
         return cls.ALUOp0
 
     @classmethod
-    def setALUSrc(cls, bit):
+    def set_alu_src(cls, bit):
         cls.ALUSrc = bit
 
     @classmethod
-    def getALUSrc(cls):
+    def get_alu_src(cls):
         return cls.ALUSrc
 
     @classmethod
-    def setMemRead(cls, bit):
+    def set_mem_read(cls, bit):
         cls.MemRead = bit
 
     @classmethod
-    def getMemRead(cls):
+    def get_mem_read(cls):
         return cls.MemRead
 
     @classmethod
-    def setMemWrite(cls, bit):
+    def set_mem_write(cls, bit):
         cls.MemWrite = bit
 
     @classmethod
-    def getMemWrite(cls):
+    def get_mem_write(cls):
         return cls.MemWrite
 
     @classmethod
-    def setRegWrite(cls, bit):
+    def set_reg_write(cls, bit):
         cls.RegWrite = bit
 
     @classmethod
-    def getRegWrite(cls):
+    def get_reg_write(cls):
         return cls.RegWrite
 
     @classmethod
-    def setMemtoReg(cls, bit):
+    def set_mem_to_reg(cls, bit):
         cls.MemtoReg = bit
 
     @classmethod
-    def getMemtoReg(cls):
+    def get_mem_to_reg(cls):
         return cls.MemtoReg
 
     @classmethod
-    def setAlu_1(cls, bits):
+    def set_alu_1(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.alu_1 = bits.copy()
         elif len(bits) == 32:
@@ -131,11 +131,11 @@ class id_ex:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getAlu_1(cls):
+    def get_alu_1(cls):
         return cls.alu_1
 
     @classmethod
-    def setAlu_2(cls, bits):
+    def set_alu_2(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.alu_2 = bits.copy()
         elif len(bits) == 32:
@@ -146,7 +146,11 @@ class id_ex:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def setInstruction_0_15(cls, bits):
+    def get_alu_2(cls):
+        return cls.alu_2
+
+    @classmethod
+    def set_instruction_0_15(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.instruction_0_15 = bits.copy()
         elif len(bits) == 32:
@@ -157,11 +161,11 @@ class id_ex:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getInstruction_0_15(cls):
+    def get_instruction_0_15(cls):
         return cls.instruction_0_15
 
     @classmethod
-    def setInstruction_16_20(cls, bits):
+    def set_instruction_16_20(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.instruction_16_20 = bits.copy()
         elif len(bits) == 32:
@@ -172,11 +176,11 @@ class id_ex:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getInstruction_16_20(cls):
+    def get_instruction_16_20(cls):
         return cls.instruction_16_20
 
     @classmethod
-    def setInstruction_11_15(cls, bits):
+    def set_instruction_11_15(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.instruction_11_15 = bits.copy()
         elif len(bits) == 32:
@@ -187,11 +191,11 @@ class id_ex:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getInstruction_11_15(cls):
+    def get_instruction_11_15(cls):
         return cls.instruction_11_15
 
     @classmethod
-    def setReadRegister_1(cls, numero_registrador):
+    def set_read_register_1(cls, numero_registrador):
         if len(numero_registrador) == 5:
             if type(numero_registrador) == list:
                 cls.readRegister_1 = ""
@@ -204,11 +208,11 @@ class id_ex:
             print("Número de bits deve ser igual à 5!")
 
     @classmethod
-    def getReadRegister_1(cls):
+    def get_read_register_1(cls):
         return cls.readRegister_1
 
     @classmethod
-    def setReadRegister_2(cls, numero_registrador):
+    def set_read_register_2(cls, numero_registrador):
         if len(numero_registrador) == 5:
             if type(numero_registrador) == list:
                 cls.readRegister_2 = ""
@@ -221,11 +225,11 @@ class id_ex:
             print("Número de bits deve ser igual à 5!")
 
     @classmethod
-    def getReadRegister_2(cls):
+    def get_read_register_2(cls):
         return cls.readRegister_2
 
 
-class ex_mem:
+class EXMEM:
     # Linas de controledo estágio de acesso à memória
     Zero = False
     Branch = False
@@ -235,53 +239,53 @@ class ex_mem:
     RegWrite = None
     MemtoReg = None
 
+    alu = None
     mux_1 = None
     mux_2 = None
-    alu = None
 
     @classmethod
-    def setZero(cls, value):
+    def set_zero(cls, value):
         if type(value) is bool:
             cls.Zero = value
 
     @classmethod
-    def getZero(cls):
+    def get_zero(cls):
         return cls.Zero
 
     @classmethod
-    def setMemRead(cls, bit):
+    def set_mem_read(cls, bit):
         cls.MemRead = bit
 
     @classmethod
-    def getMemRead(cls):
+    def get_mem_read(cls):
         return cls.MemRead
 
     @classmethod
-    def setMemWrite(cls, bit):
+    def set_mem_write(cls, bit):
         cls.MemWrite = bit
 
     @classmethod
-    def getMemWrite(cls):
+    def get_mem_write(cls):
         return cls.MemWrite
 
     @classmethod
-    def setRegWrite(cls, bit):
+    def set_reg_write(cls, bit):
         cls.RegWrite = bit
 
     @classmethod
-    def getRegWrite(cls):
+    def get_reg_write(cls):
         return cls.RegWrite
 
     @classmethod
-    def setMemtoReg(cls, bit):
+    def set_mem_to_reg(cls, bit):
         cls.MemtoReg = bit
 
     @classmethod
-    def getMemtoReg(cls):
+    def get_mem_to_reg(cls):
         return cls.MemtoReg
 
     @classmethod
-    def setMux_1(cls, bits):
+    def set_mux_1(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.mux_1 = bits.copy()
         elif len(bits) == 32:
@@ -292,11 +296,11 @@ class ex_mem:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getMux_1(cls):
+    def get_mux_1(cls):
         return cls.mux_1
 
     @classmethod
-    def setMux_2(cls, bits):
+    def set_mux_2(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.mux_2 = bits.copy()
         elif len(bits) == 32:
@@ -307,11 +311,11 @@ class ex_mem:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getMux_2(cls):
+    def get_mux_2(cls):
         return cls.mux_2
 
     @classmethod
-    def setAlu(cls, bits):
+    def set_alu(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.alu = bits.copy()
         elif len(bits) == 32:
@@ -322,11 +326,11 @@ class ex_mem:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getAlu(cls):
+    def get_alu(cls):
         return cls.alu
 
 
-class mem_wb:
+class MEMWB:
     # Linhas de controle do estágio de escrita do resultado
     RegWrite = None
     MemtoReg = None
@@ -336,23 +340,23 @@ class mem_wb:
     mux = None
 
     @classmethod
-    def setRegWrite(cls, bit):
+    def set_reg_write(cls, bit):
         cls.RegWrite = bit
 
     @classmethod
-    def getRegWrite(cls):
+    def get_reg_write(cls):
         return cls.RegWrite
 
     @classmethod
-    def setMemtoReg(cls, bit):
+    def set_memto_reg(cls, bit):
         cls.MemtoReg = bit
 
     @classmethod
-    def getMemtoReg(cls):
+    def get_mem_to_reg(cls):
         return cls.MemtoReg
 
     @classmethod
-    def setDataMemory(cls, bits):
+    def set_data_memory(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.dataMemory = bits.copy()
         elif len(bits) == 32:
@@ -363,11 +367,11 @@ class mem_wb:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getDataMemory(cls):
+    def get_data_memory(cls):
         return cls.dataMemory
 
     @classmethod
-    def setAlu(cls, bits):
+    def set_alu(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.alu = bits.copy()
         elif len(bits) == 32:
@@ -378,11 +382,11 @@ class mem_wb:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getAlu(cls):
+    def get_alu(cls):
         return cls.alu
 
     @classmethod
-    def setMux(cls, bits):
+    def set_mux(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.mux = bits.copy()
         elif len(bits) == 32:
@@ -393,5 +397,5 @@ class mem_wb:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getMux(cls):
+    def get_mux(cls):
         return cls.mux

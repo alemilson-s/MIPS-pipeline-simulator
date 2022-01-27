@@ -5,8 +5,7 @@ class Dado:
 
     def __init__(self, bits):
         """
-        Construtor da classe
-        :param bits: Representa os 32 bits de um dado
+        Construtor da classe: param bits: Representa os 32 bits de um dado
         """
         self.bits = []  # Lista que representa os bits do dado, o bit na posição 0 é o mais significativo
         if type(bits) == list and len(bits) == 32:
@@ -17,18 +16,17 @@ class Dado:
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
-    def getDado(self):
+    def get_dado(self):
         """
         Retorna uma lista com todos os 32 bits do dado
-        :return: Lista com 32 bits do dado
+        return: Lista com 32 bits do dado
         """
         return self.bits
 
-    def setDado(self, bits):
+    def set_dado(self, bits):
         """
          Método para alterar os 32 bits da lista(bits) representando os bits de um dado
-         :param bits: String ou lista representando 32 bits
-         :return: Não há retorno
+         param bits: String ou lista representando 32 bits
         """
         if type(bits) == list and len(bits) == 32:
             self.bits = bits.copy()
@@ -45,7 +43,7 @@ class MemoriaDeDados:
     Classe representando a memória de dados
     """
 
-    dados: map = {}  # Dicionário que vincula endereços de memória a dados
+    dados: dict = {}  # Dicionário que vincula endereços de memória a dados
     address = ""  #
     writeData = ""
     readData = ""
@@ -54,8 +52,6 @@ class MemoriaDeDados:
     def inicializar_memoria(cls):
         """
         Método para instanciar um novo dado e vincula-la a um endereço de memória
-        :param bits: String representando os 32 bits do dado
-        :return: Não há retorno
         """
         cls.address = "00000000000000000000000000000000"
         cls.writeData = "00000000000000000000000000000000"
@@ -66,7 +62,7 @@ class MemoriaDeDados:
         # próximo dado
 
         # invertendo os bits do dado para manter o padrão
-        vai_um: bool = False  # Variável para auxiliar na soma binária de endereco_atual com quatro_bytes
+        vai_um: bool = False  # Variável para auxiliar na soma binária de endereço atual com quatro ‘bytes’
         while endereco_atual != "00000000000010000000000000000000":
             # print(endereco_atual[::-1])
             cls.dados[endereco_atual[::-1]] = Dado("00000000000000000000000000000000")  # Instanciando um novo dado e
@@ -116,27 +112,26 @@ class MemoriaDeDados:
     @classmethod
     def read(cls):
         """
-        Método para ler o dado de um endereco de memoria
-        :return:
+        Método para ler o dado de um endereco de memória
         """
-        cls.readData = cls.dados[cls.address].getDado()
+        cls.readData = cls.dados[cls.address].get_dado()
 
     @classmethod
     def write(cls):
         """
-        Método para alterar o conteudo de um endereco de memoria
+        Método para alterar o conteudo de um endereco de memória
         """
-        cls.dados[cls.address].setDado(cls.writeData)
+        cls.dados[cls.address].set_dado(cls.writeData)
 
     @classmethod
-    def getReadData(cls):
+    def get_read_data(cls):
         """
         Método para retornar dado contido em readData
         """
         return cls.readData
 
     @classmethod
-    def setAddress(cls, address):
+    def set_address(cls, address):
         if type(address) == str and len(address) == 32:
             cls.address = str(address)
         elif len(address) == 32:
@@ -147,21 +142,21 @@ class MemoriaDeDados:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def setWriteDate(cls, writeData):
-        if type(writeData) == str and len(writeData) == 32:
-            cls.writeData = str(writeData)
-        elif len(writeData) == 32:
+    def set_write_date(cls, write_data):
+        if type(write_data) == str and len(write_data) == 32:
+            cls.writeData = str(write_data)
+        elif len(write_data) == 32:
             cls.writeData = ""
-            for valor in writeData:
+            for valor in write_data:
                 cls.writeData = cls.writeData + cls.writeData.join(valor)
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
 
 MemoriaDeDados.inicializar_memoria()
-MemoriaDeDados.setAddress("00000000000000000000111110000000")
-print(MemoriaDeDados.getReadData())
-MemoriaDeDados.setWriteDate("00000111000000000000111110111111")
+MemoriaDeDados.set_address("00000000000000000000111110000000")
+print(MemoriaDeDados.get_read_data())
+MemoriaDeDados.set_write_date("00000111000000000000111110111111")
 MemoriaDeDados.write()
 MemoriaDeDados.read()
-print(MemoriaDeDados.getReadData())
+print(MemoriaDeDados.get_read_data())

@@ -9,37 +9,37 @@ class Alu:
     Zero = False  # indica se o resultado da operação da ALU foi zero
 
     @classmethod
-    def getData_1(cls):
+    def get_data_1(cls):
         return cls.data_1
 
     @classmethod
-    def setData_1(cls, bits):
+    def set_data_1(cls, bits):
         if type(bits) is list and len(bits) == 32:
             cls.data_1 = bits.copy()
 
     @classmethod
-    def getData_2(cls):
+    def get_data_2(cls):
         return cls.data_2
 
     @classmethod
-    def setData_2(cls, bits):
+    def set_data_2(cls, bits):
         if type(bits) is list and len(bits) == 32:
             cls.data_2 = bits.copy()
 
     @classmethod
-    def setALUControl_input(cls):
+    def set_alu_control_input(cls):
         """
         Atualiza os 4 bits que indicam a operação a ser feita na ALU
         :return: Sem retorno
         """
-        cls.ALUControl_input = UnidadeDeControle.ALUControl.getALUControl_input()
+        cls.ALUControl_input = UnidadeDeControle.ALUControl.get_alu_control_input()
 
     @classmethod
-    def getALUOutput(cls):
+    def get_alu_output(cls):
         return cls.ALUOutput
 
     @classmethod
-    def zeroActivate(cls):
+    def zero_is_activate(cls):
         """
         Retorna se o resultado da operação feita ALU é igual a zero
         :return: Atributo Zero da ALU

@@ -6,7 +6,7 @@ class Instrucao:
     def __init__(self, bits):
         """
         Construtor da classe
-        :param bits: Representa 32 bits da instrução
+        bits: Representa 32 bits da instrução
         """
         self.bits = []  # Lista que representa os bits da instrução, o bit na posição 0 é o mais significativo
         if type(bits) == list and len(bits) == 32:
@@ -18,10 +18,10 @@ class Instrucao:
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
-    def getInstrucao(self):
+    def get_instrucao(self):
         """
         Retorna uma lista com todos os 32 bits da instrução
-        :return: Lista com 32 bits da instrução
+        Lista com 32 bits da instrução
         """
         return self.bits
 
@@ -30,7 +30,7 @@ class MemoriaDeInstrucoes:
     """
     Classe representando a memória de instruções
     """
-    instrucoes: map = {}  # Dicionário que vincula endereços de memória a instruções
+    instrucoes: dict = {}  # Dicionário que vincula endereços de memória a instruções
     readAddress = "00000000000000000000000000000000"  # Endereço recibo de PC
     instruction = "00000000000000000000000000000000"  # Instrução lida da memória
     endereco_atual = "00000000000000000000000000000000"  # Endereço ao qual uma nova instrução será vinculado
@@ -39,15 +39,15 @@ class MemoriaDeInstrucoes:
     def inserir_instrucao(cls, bits):
         """
         Método para instanciar uma nova instrução e vincula-la a um endereço de memória
-        :param bits: String representando os 32 bits da instrução
-        :return: Não há retorno
+        bits: String representando os 32 bits da instrução
+        Não há retorno
         """
         quatro_bytes = "000001000000000000000000000000000"  # Variável para auxiliar no cálculo  do endereço da
         # próxima instrução
 
         cls.instrucoes[cls.endereco_atual[::-1]] = Instrucao(bits)  # Instanciando uma nova instrução e
         # invertendo os bits da instrução para manter o padrão
-        vai_um: bool = False  # Variável para auxiliar na soma binária de endereco_atual com quatro_bytes
+        vai_um: bool = False  # Variável para auxiliar na soma binária de endereço atual com quatro ‘bytes’
 
         for indice, valor in enumerate(cls.endereco_atual):
             if valor == '0' and quatro_bytes.__getitem__(indice) == '0' and not vai_um:
@@ -92,7 +92,7 @@ class MemoriaDeInstrucoes:
                 vai_um = True
 
     @classmethod
-    def setReadAddress(cls, address):
+    def set_read_address(cls, address):
         if type(address) == str and len(address) == 32:
             cls.readAddress = str(address)
         elif len(address) == 32:
@@ -103,7 +103,7 @@ class MemoriaDeInstrucoes:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def getInstruction(cls):
+    def get_instruction(cls):
         """
         Método para retornar uma instrução dado seu endereço
         """
