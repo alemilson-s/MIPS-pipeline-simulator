@@ -2,11 +2,11 @@ from UnidadeDeControle import UnidadeDeControle
 
 
 class Alu:
-    data_1 = None
-    data_2 = None
-    ALUControl_input: str = None
-    ALUOutput = None
-    Zero = False
+    data_1 = None  # primeiro operando da ALU
+    data_2 = None  # segundo operando da ALU
+    ALUControl_input: str = None  # bits que indicam a operação a ser feita na ALU
+    ALUOutput = None  # saída da ALU
+    Zero = False  # indica se o resultado da operação da ALU foi zero
 
     @classmethod
     def getData_1(cls):
@@ -28,6 +28,10 @@ class Alu:
 
     @classmethod
     def setALUControl_input(cls):
+        """
+        Atualiza os 4 bits que indicam a operação a ser feita na ALU
+        :return: Sem retorno
+        """
         cls.ALUControl_input = UnidadeDeControle.ALUControl.getALUControl_input()
 
     @classmethod
@@ -36,6 +40,10 @@ class Alu:
 
     @classmethod
     def zeroActivate(cls):
+        """
+        Retorna se o resultado da operação feita ALU é igual a zero
+        :return: Atributo Zero da ALU
+        """
         return cls.Zero
 
     @classmethod
@@ -88,26 +96,24 @@ class Alu:
 
     @classmethod
     def run(cls):
-        alu_1 = ''
+        alu_1 = ''  # Guarda conversão do primeiro operando da ALU em string
         for valor in cls.data_1:
             alu_1 = alu_1 + alu_1.join(valor)
 
-        alu_2 = ''
+        alu_2 = ''  # Guarda conversão do segundo operando da ALU em string
         for valor in cls.data_2:
             alu_2 = alu_2 + alu_2.join(valor)
 
         if cls.ALUControl_input.__eq__('0010'):  # soma
-            alu_1 = alu_1[::-1]
-            alu_2 = alu_2[::-1]
-            cls.ALUOutput = Alu.soma(alu_1, alu_2)
-            cls.ALUOutput = cls.ALUOutput[::-1]
-            aux = []
-            for valor in cls.ALUOutput:
-                aux.append(valor)
-            cls.ALUOutput = aux.copy()
+            alu_1 = alu_1[::-1]  # inversão feita para facilitar soma
+            alu_2 = alu_2[::-1]  # inversão feita para facilitar soma
+            cls.ALUOutput = Alu.soma(alu_1, alu_2)  # guardando resultado da soma em formato string
+            cls.ALUOutput = cls.ALUOutput[::-1]  # inversão para voltar ao normal
+            cls.ALUOutput = list(cls.ALUOutput)  # convertendo em lista
         elif cls.ALUControl_input.__eq__('0110'):  # subtração
             inverter = False
             aux_alu2 = []
+            # tornando segundo operando da ALU negativo — inicio
             for indice, valor in enumerate(alu_2):
                 if valor.__eq__('1') and (not inverter):
                     inverter = True
@@ -119,14 +125,12 @@ class Alu:
             alu_2 = ''
             for valor in aux_alu2:
                 alu_2 += alu_2.join(valor)
+            # tornando segundo operando da ALU negativo — fim
             alu_1 = alu_1[::-1]
             alu_2 = alu_2[::-1]
             cls.ALUOutput = Alu.soma(alu_1, alu_2)
             cls.ALUOutput = cls.ALUOutput[::-1]
-            aux = []
-            for valor in cls.ALUOutput:
-                aux.append(valor)
-            cls.ALUOutput = aux.copy()
+            cls.ALUOutput = list(cls.ALUOutput)
             cls.Zero = True
             for valor in cls.ALUOutput:
                 if valor.__eq__('1'):
