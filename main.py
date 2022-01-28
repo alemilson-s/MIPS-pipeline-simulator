@@ -26,18 +26,18 @@ if __name__ == "__main__":
         MemoriaDeInstrucoes.MemoriaDeInstrucoes.inserir_instrucao(line)
         print(line)
 
-    for i in range(8):
+    for i in linhas_arquivo:
         MemoriaDeInstrucoes.MemoriaDeInstrucoes.set_read_address(PC.Pc.get_pc())
         print(MemoriaDeInstrucoes.MemoriaDeInstrucoes.get_instruction())
-        Somadores.AdderPcMoreFour.set_primeiro_operando(PC.Pc.get_pc())
-        Somadores.AdderPcMoreFour.run()
-        PC.Pc.set_pc(Somadores.AdderPcMoreFour.get())
-    # i = "00000010001100101000000100100100"
+        Somadores.PrimeiroSomador.set_primeiro_operando(PC.Pc.get_pc())
+        Somadores.PrimeiroSomador.run()
+        PC.Pc.set_pc(Somadores.PrimeiroSomador.get())
+    # i = "00000010001100101000000100100010"
     # MemoriaDeInstrucoes.MemoriaDeInstrucoes.inserir_instrucao(i)
     # MemoriaDeInstrucoes.MemoriaDeInstrucoes.set_read_address("00000000000000000000000000000000")
     # print(MemoriaDeInstrucoes.MemoriaDeInstrucoes.get_instruction())
     # BancoDeRegistradores.S1.set("00000000000000000000000000001000")
-    # BancoDeRegistradores.S2.set("00000000000000000000000000000011")
+    # BancoDeRegistradores.S2.set("00000000000000000000000000000101")
     # UnidadeDeControle.Control.set_instruction((list(i[::-1])))
     # UnidadeDeControle.Control.run()
     # UnidadeDeControle.HazardDetectionUnit.run()
