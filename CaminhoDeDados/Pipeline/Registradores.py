@@ -47,8 +47,9 @@ class IDEX:
     RegWrite = None
     MemtoReg = None
 
-    alu_1 = None
-    alu_2 = None
+    pc_more_4 = None
+    read_data_1 = None
+    read_data_2 = None
     instruction_0_15 = None
     instruction_16_20 = None
     instruction_11_15 = None
@@ -120,34 +121,34 @@ class IDEX:
         return cls.MemtoReg
 
     @classmethod
-    def set_alu_1(cls, bits):
+    def set_read_data_1(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.alu_1 = bits.copy()
+            cls.read_data_1 = bits.copy()
         elif len(bits) == 32:
-            cls.alu_1.clear()
+            cls.read_data_1.clear()
             for valor in bits:
-                cls.alu_1.insert(0, valor)
+                cls.read_data_1.insert(0, valor)
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def get_alu_1(cls):
-        return cls.alu_1
+    def get_read_data_1(cls):
+        return cls.read_data_1
 
     @classmethod
-    def set_alu_2(cls, bits):
+    def set_read_data_2(cls, bits):
         if type(bits) == list and len(bits) == 32:
-            cls.alu_2 = bits.copy()
+            cls.read_data_2 = bits.copy()
         elif len(bits) == 32:
-            cls.alu_2.clear()
+            cls.read_data_2.clear()
             for valor in bits:
-                cls.alu_2.insert(0, valor)
+                cls.read_data_2.insert(0, valor)
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
-    def get_alu_2(cls):
-        return cls.alu_2
+    def get_read_data_2(cls):
+        return cls.read_data_2
 
     @classmethod
     def set_instruction_0_15(cls, bits):
@@ -228,6 +229,21 @@ class IDEX:
     def get_read_register_2(cls):
         return cls.readRegister_2
 
+    @classmethod
+    def set_pc_more_4(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.pc_more_4 = bits.copy()
+        elif len(bits) == 32:
+            cls.pc_more_4.clear()
+            for valor in bits:
+                cls.pc_more_4.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get_pc_more_4(cls):
+        return cls.pc_more_4
+
 
 class EXMEM:
     # Linas de controledo estágio de acesso à memória
@@ -239,6 +255,7 @@ class EXMEM:
     RegWrite = None
     MemtoReg = None
 
+    somador = None
     alu = None
     mux_1 = None
     mux_2 = None
@@ -328,6 +345,21 @@ class EXMEM:
     @classmethod
     def get_alu(cls):
         return cls.alu
+
+    @classmethod
+    def set_somador(cls, bits):
+        if type(bits) == list and len(bits) == 32:
+            cls.somador = bits.copy()
+        elif len(bits) == 32:
+            cls.somador.clear()
+            for valor in bits:
+                cls.somador.insert(0, valor)
+        else:
+            print("Quantidade de bits tem de ser igual a 32!\n")
+
+    @classmethod
+    def get_somador(cls):
+        return cls.somador
 
 
 class MEMWB:
