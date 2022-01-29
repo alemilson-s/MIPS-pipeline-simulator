@@ -47,14 +47,14 @@ class IDEX:
     RegWrite = False
     MemtoReg = False
 
-    pc_more_4 = list("00000000000000000000000000000000")
-    read_data_1 = list("00000000000000000000000000000000")
-    read_data_2 = list("00000000000000000000000000000000")
+    pc_more_4 = list("00000000000000000000000000000000")  # Pc + 4
+    read_data_1 = list("00000000000000000000000000000000")  # bits do registrador rs
+    read_data_2 = list("00000000000000000000000000000000")  # bits do registrador rt
     instruction_0_15 = list("0000000000000000")
     instruction_16_20 = list("01000")
     instruction_11_15 = list("01000")
-    readRegister_1 = list("00000")
-    readRegister_2 = list("00000")
+    readRegister_1 = list("00000")  # instrução -> bits de [21-25]
+    readRegister_2 = list("00000")  # instrução -> bits de [16-20]
 
     @classmethod
     def set_reg_dst(cls, bit):
@@ -266,7 +266,7 @@ class EXMEM:
     somador = list("00000000000000000000000000000000")
     alu = list("00000000000000000000000000000000")
     mux_1 = list("00000000000000000000000000000000")
-    mux_2 = list("01000")
+    mux_2 = list("00000")
 
     @classmethod
     def set_zero(cls, value):
@@ -326,14 +326,14 @@ class EXMEM:
 
     @classmethod
     def set_mux_2(cls, bits):
-        if type(bits) == list and len(bits) == 32:
+        if type(bits) == list and len(bits) == 5:
             cls.mux_2 = bits.copy()
         elif len(bits) == 32:
             cls.mux_2.clear()
             for valor in bits:
                 cls.mux_2.insert(0, valor)
         else:
-            print("Quantidade de bits tem de ser igual a 32!\n")
+            print("Quantidade de bits tem de ser igual a 5!\n")
 
     @classmethod
     def get_mux_2(cls):
@@ -435,14 +435,14 @@ class MEMWB:
 
     @classmethod
     def set_mux(cls, bits):
-        if type(bits) == list and len(bits) == 32:
+        if type(bits) == list and len(bits) == 5:
             cls.mux = bits.copy()
         elif len(bits) == 32:
             cls.mux.clear()
             for valor in bits:
                 cls.mux.insert(0, valor)
         else:
-            print("Quantidade de bits tem de ser igual a 32!\n")
+            print("Quantidade de bits tem de ser igual a 5!\n")
 
     @classmethod
     def get_mux(cls):

@@ -8,6 +8,16 @@ class BancoDeRegistradores:
     writeData = None  # Bits do dado a ser escrito
     readData1 = None  # Bits do dado contido no primeiro operando
     readData2 = None  # Bits do dado contido no segundo operando
+    RegWrite = False
+
+    @classmethod
+    def set_reg_write(cls, sinal):
+        cls.RegWrite = sinal
+
+    @classmethod
+    def run(cls):
+        if cls.RegWrite:
+            cls.write()
 
     @classmethod
     def set_read_register_1(cls, numero_registrador):

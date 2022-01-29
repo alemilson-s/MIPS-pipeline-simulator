@@ -47,6 +47,8 @@ class MemoriaDeDados:
     address = ""  #
     writeData = ""
     readData = ""
+    mem_read = False
+    mem_write = False
 
     @classmethod
     def inicializar_memoria(cls):
@@ -138,13 +140,14 @@ class MemoriaDeDados:
             cls.address = ""
             for valor in address:
                 cls.address = cls.address + cls.address.join(valor)
+            cls.address = cls.address[::-1]
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
     @classmethod
     def set_write_date(cls, write_data):
         if type(write_data) == str and len(write_data) == 32:
-            cls.writeData = str(write_data)
+            cls.writeData = write_data
         elif len(write_data) == 32:
             cls.writeData = ""
             for valor in write_data:
@@ -152,11 +155,25 @@ class MemoriaDeDados:
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 
+    @classmethod
+    def set_mem_read(cls, sinal):
+        cls.mem_read = sinal
 
-MemoriaDeDados.inicializar_memoria()
-MemoriaDeDados.set_address("00000000000000000000111110000000")
-print(MemoriaDeDados.get_read_data())
-MemoriaDeDados.set_write_date("00000111000000000000111110111111")
-MemoriaDeDados.write()
-MemoriaDeDados.read()
-print(MemoriaDeDados.get_read_data())
+    @classmethod
+    def set_mem_write(cls, sinal):
+        cls.mem_write = sinal
+
+    @classmethod
+    def run(cls):
+        if cls.mem_write:
+            cls.write()
+        if cls.mem_read:
+            cls.read()
+
+# MemoriaDeDados.inicializar_memoria()
+# MemoriaDeDados.set_address(list("00000000000000000000111110000000"[::-1]))
+# print(MemoriaDeDados.get_read_data())
+# MemoriaDeDados.set_write_date("00000111000000000000111110111111")
+# MemoriaDeDados.write()
+# MemoriaDeDados.read()
+# print(MemoriaDeDados.get_read_data())

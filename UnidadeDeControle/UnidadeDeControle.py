@@ -1,6 +1,7 @@
 from CaminhoDeDados import BancoDeRegistradores
 from CaminhoDeDados.Pipeline import Registradores
 
+
 class Control:
     # Linhas de controle do estágio de execução/cálculo de endereço
     RegDSt = False
@@ -102,7 +103,7 @@ class Control:
             cls.MemRead = True  # fazer leitura na memória
             cls.MemWrite = False  # não fazer escrita na memória
             cls.RegWrite = True  # fazer escita no banco de registradores
-            cls.MemtoReg = False  # sleciona valor lido da memória
+            cls.MemtoReg = False  # seleciona valor lido da memória
         elif op.__eq__('101011'):  # sw
             cls.ALUOp1 = False
             cls.ALUOp0 = False
@@ -380,7 +381,7 @@ class ALUControl:
         elif alu_op0 and (not alu_op1):  # beq, bne
             cls.alu_control_output = '0110'
         elif (not alu_op0) and alu_op1:  # R type
-            aux = Control.get_instruction()
+            aux = Registradores.IDEX.get_instruction_0_15()
             aux = aux[0:6]
             funct = ''
             for indice in range(5, -1, -1):
@@ -399,3 +400,23 @@ class ALUControl:
                 cls.alu_control_output = '1010'
             elif funct.__eq__('000000'):  # sll
                 cls.alu_control_output = '1111'
+
+
+class And:
+    Zero: bool = False
+    Branch: bool = False
+
+    @classmethod
+    def set_zero(cls, sinal):
+        cls.Zero = sinal
+
+    @classmethod
+    def set_branch(cls, sinal):
+        cls.Branch = sinal
+
+    @classmethod
+    def get(cls):
+        if cls.Zero and cls.Branch:
+            return True
+        else:
+            return False

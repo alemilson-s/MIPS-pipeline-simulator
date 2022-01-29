@@ -118,8 +118,8 @@ class MuxAlu2:
 
 
 class MuxEXMEM:
-    bits_0: list = list("00000")  # bits [16-20] da instrução
-    bits_1: list = list("00000")  # bits [11-15] da instrução
+    bits_0: list = list("00000")  # bits [16-20] da instrução -> rt
+    bits_1: list = list("00000")  # bits [11-15] da instrução -> rd
     sinal_de_controle: bool = False
 
     @classmethod
@@ -151,6 +151,38 @@ class MuxEXMEM:
 class MuxReg:
     bits_0: list = list("00000000000000000000000000000000")  # conteúdo lido da memória
     bits_1: list = list("00000000000000000000000000000000")  # saída da ALU
+    sinal_de_controle: bool = False
+
+    @classmethod
+    def set_sinal_de_controle(cls, sinal):
+        cls.sinal_de_controle = sinal
+
+    @classmethod
+    def set_bits_0(cls, bits):
+        if type(bits) is list and len(bits) == 32:
+            cls.bits_0 = bits.copy()
+        else:
+            print("Espera-se receber como parâmetro uma lista de 32 bits!")
+
+    @classmethod
+    def set_bits_1(cls, bits):
+        if type(bits) is list and len(bits) == 32:
+            cls.bits_1 = bits.copy()
+        else:
+            print("Espera-se receber como parâmetro uma lista de 32 bits!")
+
+    @classmethod
+    def get(cls):
+        if cls.sinal_de_controle is True:
+            return cls.bits_1
+        elif cls.sinal_de_controle is False:
+            return cls.bits_0
+
+
+class MuxALUsrcToALU:
+    bits_0: list = list("00000000000000000000000000000000")  # bits vindo do Mutiplexador MuxAlu2
+    bits_1: list = list("00000000000000000000000000000000")  # bits vindo dos bits [0 – 15] da instrução
+    # com extenção de sinal contido em IDEX
     sinal_de_controle: bool = False
 
     @classmethod
