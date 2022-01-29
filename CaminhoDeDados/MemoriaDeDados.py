@@ -152,6 +152,7 @@ class MemoriaDeDados:
             cls.writeData = ""
             for valor in write_data:
                 cls.writeData = cls.writeData + cls.writeData.join(valor)
+            cls.writeData = cls.writeData[::-1]
         else:
             print("Quantidade de bits tem de ser igual a 32!\n")
 

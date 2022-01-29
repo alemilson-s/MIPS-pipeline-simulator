@@ -124,7 +124,7 @@ class BancoDeRegistradores:
             Sp.set(cls.writeData)
         elif cls.writeRegister == Ra.get_id():
             Ra.set(cls.writeData)
-        else:
+        elif cls.writeRegister != Zero.get_id():
             print("Registrador não encontrado!")
 
     @classmethod

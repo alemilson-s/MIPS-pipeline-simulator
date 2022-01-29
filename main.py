@@ -9,6 +9,7 @@ from CaminhoDeDados import Multiplexadores
 from CaminhoDeDados.ExtensorDeSinal import ExtensorDeSinal
 from CaminhoDeDados.BancoDeRegistradores import T0
 from CaminhoDeDados.BancoDeRegistradores import S0
+from CaminhoDeDados.BancoDeRegistradores import S4
 from CaminhoDeDados.ShiftLeftTwo import ShiftLeftTwo
 from CaminhoDeDados.MemoriaDeDados import MemoriaDeDados
 
@@ -174,3 +175,7 @@ if __name__ == "__main__":
         Multiplexadores.MuxReg.set_bits_0(Registradores.MEMWB.get_data_memory())
         Multiplexadores.MuxReg.set_bits_1(Registradores.MEMWB.get_alu())
         Multiplexadores.MuxReg.set_sinal_de_controle(Registradores.EXMEM.get_mem_to_reg())
+        BancoDeRegistradores.run()
+
+    print(f"Conteúdo de S0 = {S0.get()}")
+    print(f"Conteúdo de S4 = {S4.get()}")
