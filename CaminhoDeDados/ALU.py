@@ -4,7 +4,7 @@ from UnidadeDeControle import UnidadeDeControle
 class Alu:
     data_1 = None  # primeiro operando da ALU
     data_2 = None  # segundo operando da ALU
-    ALUControl_input: str = None  # bits que indicam a operação a ser feita na ALU
+    ALUControl_output: str = None  # bits que indicam a operação a ser feita na ALU
     ALUOutput = None  # saída da ALU
     Zero = False  # indica se o resultado da operação da ALU foi zero
 
@@ -27,12 +27,12 @@ class Alu:
             cls.data_2 = bits.copy()
 
     @classmethod
-    def set_alu_control_input(cls):
+    def set_alu_control_output(cls):
         """
         Atualiza os 4 bits que indicam a operação a ser feita na ALU
         Sem retorno
         """
-        cls.ALUControl_input = UnidadeDeControle.ALUControl.get_alu_control_input()
+        cls.ALUControl_output = UnidadeDeControle.ALUControl.get_alu_control_output()
 
     @classmethod
     def get_alu_output(cls):
@@ -104,13 +104,13 @@ class Alu:
         for valor in cls.data_2:
             alu_2 = alu_2 + alu_2.join(valor)
 
-        if cls.ALUControl_input.__eq__('0010'):  # soma
+        if cls.ALUControl_output.__eq__('0010'):  # soma
             alu_1 = alu_1[::-1]  # inversão feita para facilitar soma
             alu_2 = alu_2[::-1]  # inversão feita para facilitar soma
             cls.ALUOutput = Alu.soma(alu_1, alu_2)  # guardando resultado da soma em formato 'string'
             cls.ALUOutput = cls.ALUOutput[::-1]  # inversão para voltar ao normal
             cls.ALUOutput = list(cls.ALUOutput)  # convertendo em lista
-        elif cls.ALUControl_input.__eq__('0110'):  # subtração
+        elif cls.ALUControl_output.__eq__('0110'):  # subtração
             inverter = False
             aux_alu2 = []
             # tornando segundo operando da ALU negativo — inicio
@@ -135,7 +135,7 @@ class Alu:
             for valor in cls.ALUOutput:
                 if valor.__eq__('1'):
                     cls.Zero = False
-        elif cls.ALUControl_input.__eq__('0000'):  # and
+        elif cls.ALUControl_output.__eq__('0000'):  # and
             aux1 = list(alu_1)
             aux2 = list(alu_2)
             result = []
@@ -145,7 +145,7 @@ class Alu:
                 else:
                     result.insert(indice, '0')
             cls.ALUOutput = result.copy()
-        elif cls.ALUControl_input.__eq__('0001'):  # or
+        elif cls.ALUControl_output.__eq__('0001'):  # or
             aux1 = list(alu_1)
             aux2 = list(alu_2)
             result = []
@@ -155,7 +155,7 @@ class Alu:
                 else:
                     result.insert(indice, '0')
             cls.ALUOutput = result.copy()
-        elif cls.ALUControl_input.__eq__('0111'):  # slt
+        elif cls.ALUControl_output.__eq__('0111'):  # slt
             soma_1 = 0
             for indice, valor in enumerate(alu_1):
                 valor = int(valor) * 2 ** indice
@@ -168,9 +168,9 @@ class Alu:
                 cls.ALUOutput = list('10000000000000000000000000000000')
             else:
                 cls.ALUOutput = list('00000000000000000000000000000000')
-        elif cls.ALUControl_input.__eq__('1010'):  # jr
+        elif cls.ALUControl_output.__eq__('1010'):  # jr
             pass
-        elif cls.ALUControl_input.__eq__('1111'):  # sll
+        elif cls.ALUControl_output.__eq__('1111'):  # sll
             quantidade_deslocamento = alu_2[6:11]
             n = 0
             for indice, valor in enumerate(quantidade_deslocamento):

@@ -1,6 +1,6 @@
 class IFID:
-    pc_more_4 = None
-    instruction = None
+    pc_more_4 = list("00000000000000000000000000000000")
+    instruction = list("00000000000000000000000000000000")
 
     @classmethod
     def set_instruction(cls, bits):
@@ -35,26 +35,26 @@ class IFID:
 
 class IDEX:
     # Linhas de controle do estágio de execução/cálculo de endereço
-    RegDSt = None
-    ALUOp1 = None
-    ALUOp0 = None
-    ALUSrc = None
+    RegDSt = False
+    ALUOp1 = False
+    ALUOp0 = False
+    ALUSrc = False
     # Linas de controledo estágio de acesso à memória
     Branch = False
-    MemRead = None
-    MemWrite = None
+    MemRead = False
+    MemWrite = False
     # Linhas de controle do estágio de escrita do resultado
-    RegWrite = None
-    MemtoReg = None
+    RegWrite = False
+    MemtoReg = False
 
-    pc_more_4 = None
-    read_data_1 = None
-    read_data_2 = None
-    instruction_0_15 = None
-    instruction_16_20 = None
-    instruction_11_15 = None
-    readRegister_1 = None
-    readRegister_2 = None
+    pc_more_4 = list("00000000000000000000000000000000")
+    read_data_1 = list("00000000000000000000000000000000")
+    read_data_2 = list("00000000000000000000000000000000")
+    instruction_0_15 = list("0000000000000000")
+    instruction_16_20 = list("01000")
+    instruction_11_15 = list("01000")
+    readRegister_1 = list("00000")
+    readRegister_2 = list("00000")
 
     @classmethod
     def set_reg_dst(cls, bit):
@@ -121,6 +121,14 @@ class IDEX:
         return cls.MemtoReg
 
     @classmethod
+    def set_branch(cls, bit):
+        cls.Branch = bit
+
+    @classmethod
+    def get_branch(cls):
+        return cls.Branch
+
+    @classmethod
     def set_read_data_1(cls, bits):
         if type(bits) == list and len(bits) == 32:
             cls.read_data_1 = bits.copy()
@@ -167,14 +175,14 @@ class IDEX:
 
     @classmethod
     def set_instruction_16_20(cls, bits):
-        if type(bits) == list and len(bits) == 32:
+        if type(bits) == list and len(bits) == 5:
             cls.instruction_16_20 = bits.copy()
-        elif len(bits) == 32:
+        elif len(bits) == 5:
             cls.instruction_16_20.clear()
             for valor in bits:
                 cls.instruction_16_20.insert(0, valor)
         else:
-            print("Quantidade de bits tem de ser igual a 32!\n")
+            print("Quantidade de bits tem de ser igual a 5!\n")
 
     @classmethod
     def get_instruction_16_20(cls):
@@ -182,14 +190,14 @@ class IDEX:
 
     @classmethod
     def set_instruction_11_15(cls, bits):
-        if type(bits) == list and len(bits) == 32:
+        if type(bits) == list and len(bits) == 5:
             cls.instruction_11_15 = bits.copy()
-        elif len(bits) == 32:
+        elif len(bits) == 5:
             cls.instruction_11_15.clear()
             for valor in bits:
                 cls.instruction_11_15.insert(0, valor)
         else:
-            print("Quantidade de bits tem de ser igual a 32!\n")
+            print("Quantidade de bits tem de ser igual a 5!\n")
 
     @classmethod
     def get_instruction_11_15(cls):
@@ -249,16 +257,16 @@ class EXMEM:
     # Linas de controledo estágio de acesso à memória
     Zero = False
     Branch = False
-    MemRead = None
-    MemWrite = None
+    MemRead = False
+    MemWrite = False
     # Linhas de controle do estágio de escrita do resultado
-    RegWrite = None
-    MemtoReg = None
+    RegWrite = False
+    MemtoReg = False
 
-    somador = None
-    alu = None
-    mux_1 = None
-    mux_2 = None
+    somador = list("00000000000000000000000000000000")
+    alu = list("00000000000000000000000000000000")
+    mux_1 = list("00000000000000000000000000000000")
+    mux_2 = list("01000")
 
     @classmethod
     def set_zero(cls, value):
@@ -361,15 +369,23 @@ class EXMEM:
     def get_somador(cls):
         return cls.somador
 
+    @classmethod
+    def set_branch(cls, bit):
+        cls.Branch = bit
+
+    @classmethod
+    def get_branch(cls):
+        return cls.Branch
+
 
 class MEMWB:
     # Linhas de controle do estágio de escrita do resultado
-    RegWrite = None
-    MemtoReg = None
+    RegWrite = False
+    MemtoReg = False
 
-    dataMemory = None
-    alu = None
-    mux = None
+    dataMemory = list("00000000000000000000000000000000")
+    alu = list("00000000000000000000000000000000")
+    mux = list("01000")
 
     @classmethod
     def set_reg_write(cls, bit):

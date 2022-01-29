@@ -1,5 +1,5 @@
 from CaminhoDeDados import BancoDeRegistradores
-
+from CaminhoDeDados.Pipeline import Registradores
 
 class Control:
     # Linhas de controle do estágio de execução/cálculo de endereço
@@ -56,6 +56,14 @@ class Control:
     @classmethod
     def get_instruction(cls):
         return cls.instruction
+
+    @classmethod
+    def set_branch(cls, bit):
+        cls.Branch = bit
+
+    @classmethod
+    def get_branch(cls):
+        return cls.Branch
 
     @classmethod
     def run(cls):
@@ -171,6 +179,8 @@ class FowardingUnit:
             for valor in bits:
                 cls.Rs = cls.Rs + cls.Rs.join(valor)
             cls.Rs = cls.Rs[::-1]
+        elif type(bits) is str:
+            cls.Rs = bits
         else:
             print("Erro, espera-se receber uma lista como parâmetro -> setRs")
 
@@ -185,6 +195,8 @@ class FowardingUnit:
             for valor in bits:
                 cls.Rt = cls.Rt + cls.Rt.join(valor)
             cls.Rt = cls.Rt[::-1]
+        elif type(bits) is str:
+            cls.Rt = bits
         else:
             print("Erro, espera-se receber uma lista como parâmetro -> setRt")
 
@@ -199,6 +211,8 @@ class FowardingUnit:
             for valor in bits:
                 cls.Rd_ex_mem = cls.Rd_ex_mem + cls.Rd_ex_mem.join(valor)
             cls.Rd_ex_mem = cls.Rd_ex_mem[::-1]
+        elif type(bits) is str:
+            cls.Rd_ex_mem = bits
         else:
             print("Erro, espera-se receber uma lista como parâmetro -> setRd_ex_mem")
 
@@ -213,6 +227,8 @@ class FowardingUnit:
             for valor in bits:
                 cls.Rd_mem_wb = cls.Rd_mem_wb + cls.Rd_mem_wb.join(valor)
             cls.Rd_mem_wb = cls.Rd_mem_wb[::-1]
+        elif type(bits) is str:
+            cls.Rd_mem_wb = bits
         else:
             print("Erro, espera-se receber uma lista como parâmetro -> setRd_mem_wb")
 
@@ -269,11 +285,11 @@ class FowardingUnit:
 class HazardDetectionUnit:
     MemRead_id_ex = False  # Sinal que indica se será feita leitura na memória,
     # caso sinal esteja habilitado há chances de ocorrer stall
-    Rd_id_ex = None  # Vem da instrução contida em ID/EX, bits [16-20] -> Número do registrador
-    Rs_if_id = None  # Vem da instrução lida de IF/ID, bits [21-25] -> Número do registrador
-    Rt_if_id = None  # Vem da instrução lida de IF/ID, bits [16-20] -> Número do registrador
-    PCWrite = None  # Sinal para indicar se PC deve ser escrito ou não
-    if_id_Write = None  # Sinal para indicar se IF/ID deve ser escrito ou não
+    Rd_id_ex = "00000"  # Vem da instrução contida em ID/EX, bits [16-20] -> Número do registrador
+    Rs_if_id = "00000"  # Vem da instrução lida de IF/ID, bits [21-25] -> Número do registrador
+    Rt_if_id = "00000"  # Vem da instrução lida de IF/ID, bits [16-20] -> Número do registrador
+    PCWrite = True  # Sinal para indicar se PC deve ser escrito ou não
+    if_id_Write = True  # Sinal para indicar se IF/ID deve ser escrito ou não
 
     @classmethod
     def get_mem_read_id_ex(cls):
@@ -347,22 +363,22 @@ class HazardDetectionUnit:
 
 
 class ALUControl:
-    alu_control_input = None
+    alu_control_output = None
 
     #   add, sub, and, or, slt, sll, addi, lw, sw, beq, bne, j, jr, jal.
     @classmethod
-    def get_alu_control_input(cls):
-        return cls.alu_control_input
+    def get_alu_control_output(cls):
+        return cls.alu_control_output
 
     @classmethod
     def run(cls):
-        alu_op0 = Control.get_alu_op_0()
-        alu_op1 = Control.get_alu_op_1()
+        alu_op0 = Registradores.IDEX.get_alu_op_0()
+        alu_op1 = Registradores.IDEX.get_alu_op_1()
 
         if (not alu_op0) and (not alu_op1):  # lw/sw, addi
-            cls.alu_control_input = '0010'
+            cls.alu_control_output = '0010'
         elif alu_op0 and (not alu_op1):  # beq, bne
-            cls.alu_control_input = '0110'
+            cls.alu_control_output = '0110'
         elif (not alu_op0) and alu_op1:  # R type
             aux = Control.get_instruction()
             aux = aux[0:6]
@@ -370,16 +386,16 @@ class ALUControl:
             for indice in range(5, -1, -1):
                 funct = funct + funct.join(aux[indice])
             if funct.__eq__('010000'):  # add
-                cls.alu_control_input = '0010'
+                cls.alu_control_output = '0010'
             elif funct.__eq__('100010'):  # sub
-                cls.alu_control_input = '0110'
+                cls.alu_control_output = '0110'
             elif funct.__eq__('100100'):  # and
-                cls.alu_control_input = '0000'
+                cls.alu_control_output = '0000'
             elif funct.__eq__('100101'):  # or
-                cls.alu_control_input = '0001'
+                cls.alu_control_output = '0001'
             elif funct.__eq__('101010'):  # slt
-                cls.alu_control_input = '0111'
+                cls.alu_control_output = '0111'
             elif funct.__eq__('001000'):  # jr
-                cls.alu_control_input = '1010'
+                cls.alu_control_output = '1010'
             elif funct.__eq__('000000'):  # sll
-                cls.alu_control_input = '1111'
+                cls.alu_control_output = '1111'
