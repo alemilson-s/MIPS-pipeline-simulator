@@ -116,14 +116,16 @@ class MemoriaDeDados:
         """
         Método para ler o dado de um endereco de memória
         """
-        cls.readData = cls.dados[cls.address].get_dado()
+        if cls.mem_read:
+            cls.readData = cls.dados[cls.address].get_dado()
 
     @classmethod
     def write(cls):
         """
         Método para alterar o conteudo de um endereco de memória
         """
-        cls.dados[cls.address].set_dado(cls.writeData)
+        if cls.mem_write:
+            cls.dados[cls.address].set_dado(cls.writeData)
 
     @classmethod
     def get_read_data(cls):

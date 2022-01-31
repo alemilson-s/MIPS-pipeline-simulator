@@ -68,9 +68,9 @@ class MuxAlu1:
         if cls.sinal_de_controle.__eq__("00"):
             return cls.bits_0
         elif cls.sinal_de_controle.__eq__("01"):
-            return cls.bits_1
-        elif cls.sinal_de_controle.__eq__("10"):
             return cls.bits_2
+        elif cls.sinal_de_controle.__eq__("10"):
+            return cls.bits_1
 
 
 class MuxAlu2:
@@ -112,9 +112,9 @@ class MuxAlu2:
         if cls.sinal_de_controle.__eq__("00"):
             return cls.bits_0
         elif cls.sinal_de_controle.__eq__("01"):
-            return cls.bits_1
-        elif cls.sinal_de_controle.__eq__("10"):
             return cls.bits_2
+        elif cls.sinal_de_controle.__eq__("10"):
+            return cls.bits_1
 
 
 class MuxEXMEM:

@@ -4,7 +4,7 @@ from CaminhoDeDados.Pipeline import Registradores
 
 class Control:
     # Linhas de controle do estágio de execução/cálculo de endereço
-    RegDSt = False
+    RegDst = False
     ALUOp1 = False
     ALUOp0 = False
     ALUSrc = False
@@ -20,7 +20,7 @@ class Control:
 
     @classmethod
     def get_reg_dst(cls):
-        return cls.RegDSt
+        return cls.RegDst
 
     @classmethod
     def get_alu_op_1(cls):
@@ -47,7 +47,7 @@ class Control:
         return cls.RegWrite
 
     @classmethod
-    def get_memto_reg(cls):
+    def get_mem_to_reg(cls):
         return cls.MemtoReg
 
     @classmethod
@@ -74,8 +74,22 @@ class Control:
             op = op + op.join(valor)
         op = op[::-1]
 
-        if op.__eq__('000000'):  # add, sub, and, or, slt, sll, jr -> R type
-            cls.RegDSt = True
+        i = ''
+        for valor in cls.instruction:
+            i = i + i.join(valor)
+        if i.__eq__("00000000000000000000000000000000"):
+            cls.RegDst = False
+            cls.ALUOp1 = False
+            cls.ALUOp0 = False
+            cls.ALUSrc = False
+            cls.Branch = False
+            cls.MemRead = False
+            cls.MemWrite = False
+            cls.RegWrite = False
+            cls.MemtoReg = False
+
+        elif op.__eq__('000000'):  # add, sub, and, or, slt, sll, jr -> R type
+            cls.RegDst = True
             cls.ALUOp1 = True
             cls.ALUOp0 = False
             cls.ALUSrc = False
@@ -85,7 +99,7 @@ class Control:
             cls.RegWrite = True
             cls.MemtoReg = True
         elif op.__eq__('001000'):  # addi
-            cls.RegDSt = False  # seleciona rt como registrador destino
+            cls.RegDst = False  # seleciona rt como registrador destino
             cls.ALUOp1 = False
             cls.ALUOp0 = False
             cls.ALUSrc = True  # seleciona bits [0-15] para somar com rs na ALU
@@ -95,7 +109,7 @@ class Control:
             cls.RegWrite = True  # fazer escrita no banco de registradores
             cls.MemtoReg = True  # selecionar valor calculado na ALU
         elif op.__eq__('100011'):  # lw
-            cls.RegDSt = False  # seleciona rt como registrador destino
+            cls.RegDst = False  # seleciona rt como registrador destino
             cls.ALUOp1 = False
             cls.ALUOp0 = False
             cls.ALUSrc = True  # selecioina bits [0-15] para somar com rs na ALU
@@ -136,7 +150,7 @@ class Control:
     @classmethod
     def zero(cls):
         cls.Branch = False
-        cls.RegDSt = False
+        cls.RegDst = False
         cls.ALUOp1 = False
         cls.ALUOp0 = False
         cls.ALUSrc = False
