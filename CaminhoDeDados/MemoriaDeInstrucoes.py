@@ -107,7 +107,10 @@ class MemoriaDeInstrucoes:
         """
         Método para retornar uma instrução dado seu endereço
         """
-        cls.instruction = cls.instrucoes[cls.readAddress].get_instrucao()
+        try:
+            cls.instruction = cls.instrucoes[cls.readAddress].get_instrucao()
+        except KeyError:
+            print("Instrução não localizada!")
         return cls.instruction
 
     @classmethod

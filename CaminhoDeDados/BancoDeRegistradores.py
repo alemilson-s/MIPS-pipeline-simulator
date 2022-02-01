@@ -72,60 +72,62 @@ class BancoDeRegistradores:
         Método para escrever no banco de registradores
         :return:
         """
-        if cls.writeRegister == V0.get_id():
-            V0.set(cls.writeData)
-        elif cls.writeRegister == V1.get_id():
-            V1.set(cls.writeData)
-        elif cls.writeRegister == A0.get_id():
-            A0.set(cls.writeData)
-        elif cls.writeRegister == A1.get_id():
-            A1.set(cls.writeData)
-        elif cls.writeRegister == A2.get_id():
-            A2.set(cls.writeData)
-        elif cls.writeRegister == A3.get_id():
-            A3.set(cls.writeData)
-        elif cls.writeRegister == T0.get_id():
-            T0.set(cls.writeData)
-        elif cls.writeRegister == T1.get_id():
-            T1.set(cls.writeData)
-        elif cls.writeRegister == T2.get_id():
-            T2.set(cls.writeData)
-        elif cls.writeRegister == T3.get_id():
-            T3.set(cls.writeData)
-        elif cls.writeRegister == T4.get_id():
-            T4.set(cls.writeData)
-        elif cls.writeRegister == T5.get_id():
-            T5.set(cls.writeData)
-        elif cls.writeRegister == T6.get_id():
-            T6.set(cls.writeData)
-        elif cls.writeRegister == T7.get_id():
-            T7.set(cls.writeData)
-        elif cls.writeRegister == S0.get_id():
-            S0.set(cls.writeData)
-        elif cls.writeRegister == S1.get_id():
-            S1.set(cls.writeData)
-        elif cls.writeRegister == S2.get_id():
-            S2.set(cls.writeData)
-        elif cls.writeRegister == S3.get_id():
-            S3.set(cls.writeData)
-        elif cls.writeRegister == S4.get_id():
-            S4.set(cls.writeData)
-        elif cls.writeRegister == S5.get_id():
-            S5.set(cls.writeData)
-        elif cls.writeRegister == S6.get_id():
-            S6.set(cls.writeData)
-        elif cls.writeRegister == S7.get_id():
-            S7.set(cls.writeData)
-        elif cls.writeRegister == T8.get_id():
-            T8.set(cls.writeData)
-        elif cls.writeRegister == T9.get_id():
-            T9.set(cls.writeData)
-        elif cls.writeRegister == Sp.get_id():
-            Sp.set(cls.writeData)
-        elif cls.writeRegister == Ra.get_id():
-            Ra.set(cls.writeData)
-        elif cls.writeRegister != Zero.get_id():
-            print("Registrador não encontrado!")
+        if cls.RegWrite:
+            if cls.writeRegister == V0.get_id():
+                V0.set(cls.writeData)
+            elif cls.writeRegister == V1.get_id():
+                V1.set(cls.writeData)
+            elif cls.writeRegister == A0.get_id():
+                A0.set(cls.writeData)
+            elif cls.writeRegister == A1.get_id():
+                A1.set(cls.writeData)
+            elif cls.writeRegister == A2.get_id():
+                A2.set(cls.writeData)
+            elif cls.writeRegister == A3.get_id():
+                A3.set(cls.writeData)
+            elif cls.writeRegister == T0.get_id():
+                T0.set(cls.writeData)
+            elif cls.writeRegister == T1.get_id():
+                T1.set(cls.writeData)
+            elif cls.writeRegister == T2.get_id():
+                T2.set(cls.writeData)
+            elif cls.writeRegister == T3.get_id():
+                T3.set(cls.writeData)
+            elif cls.writeRegister == T4.get_id():
+                T4.set(cls.writeData)
+            elif cls.writeRegister == T5.get_id():
+                T5.set(cls.writeData)
+            elif cls.writeRegister == T6.get_id():
+                T6.set(cls.writeData)
+            elif cls.writeRegister == T7.get_id():
+                T7.set(cls.writeData)
+            elif cls.writeRegister == S0.get_id():
+                S0.set(cls.writeData)
+            elif cls.writeRegister == S1.get_id():
+                S1.set(cls.writeData)
+            elif cls.writeRegister == S2.get_id():
+                S2.set(cls.writeData)
+            elif cls.writeRegister == S3.get_id():
+                S3.set(cls.writeData)
+            elif cls.writeRegister == S4.get_id():
+                S4.set(cls.writeData)
+            elif cls.writeRegister == S5.get_id():
+                S5.set(cls.writeData)
+            elif cls.writeRegister == S6.get_id():
+                S6.set(cls.writeData)
+            elif cls.writeRegister == S7.get_id():
+                S7.set(cls.writeData)
+            elif cls.writeRegister == T8.get_id():
+                T8.set(cls.writeData)
+            elif cls.writeRegister == T9.get_id():
+                T9.set(cls.writeData)
+            elif cls.writeRegister == Sp.get_id():
+                Sp.set(cls.writeData)
+            elif cls.writeRegister == Ra.get_id():
+                Ra.set(cls.writeData)
+            elif cls.writeRegister != Zero.get_id():
+                print("Registrador não encontrado!")
+        cls.RegWrite = False
 
     @classmethod
     def get_read_data_1(cls):

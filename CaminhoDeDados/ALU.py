@@ -173,10 +173,10 @@ class Alu:
         elif cls.ALUControl_output.__eq__('1111'):  # sll
             quantidade_deslocamento = alu_2[6:11]
             n = 0
-            for indice, valor in enumerate(quantidade_deslocamento):
-                valor = int(valor) * 2 ** indice
+            for indice, valor in enumerate(quantidade_deslocamento[::-1]):
+                valor = int(valor) * (2 ** indice)
                 n += valor
             for i in range(n):
-                cls.data_1.pop()
-                cls.data_1.insert(0, '0')
-            cls.ALUOutput = cls.data_1.copy()
+                cls.data_2.pop()
+                cls.data_2.insert(0, '0')
+            cls.ALUOutput = cls.data_2.copy()

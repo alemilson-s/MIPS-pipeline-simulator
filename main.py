@@ -1,3 +1,5 @@
+import os.path
+
 from CaminhoDeDados.MemoriaDeInstrucoes import MemoriaDeInstrucoes
 from UnidadeDeControle import UnidadeDeControle
 from CaminhoDeDados.ALU import Alu
@@ -114,20 +116,18 @@ def imprimir_dados():
     print(f"\t\t$ra = {list_to_string(Ra.get())}\n")
 
 
-if __name__ == "__main__":
-    caminho_arquivo = "C:\\Users\\Israel Louback\\Documents\\teste.txt"
-    caminho_arquivo_alemilson = 'C:\\Users\\ALEMILSON\\Downloads\\teste.txt.txt'
-
-    linhas_arquivo = Arquivo.read(caminho_arquivo_alemilson)
-
-    for line in linhas_arquivo:
+def executar(execucao_passo_a_passo, instrucoes_lidas):
+    quantidade_instrucoes = 0
+    for line in instrucoes_lidas:
         MemoriaDeInstrucoes.inserir_instrucao(line)
-        # print(line)
-    for i in range(5):
-        MemoriaDeInstrucoes.inserir_instrucao("11111111111111111111111111111111")
-    MemoriaDeDados.inicializar_memoria()
+        print(line)
 
-    while MemoriaDeInstrucoes.its_valid(Pc.get_pc()):
+    # for i in range(5):
+    #     MemoriaDeInstrucoes.inserir_instrucao("00000000000000000000000000000000")
+    ciclo_de_clock: int = 0
+    ciclos_ultima_instrucao = 0
+    while MemoriaDeInstrucoes.its_valid(Pc.get_pc()) or ciclos_ultima_instrucao < 5:
+        print(f'\n{ciclo_de_clock + 1}o ciclo de clock')
         # inicio primeira etapa escrita
         MemoriaDeInstrucoes.set_read_address(Pc.get_pc())
 
@@ -311,11 +311,184 @@ if __name__ == "__main__":
         Multiplexadores.MuxPC.set_bits_0(Somadores.PrimeiroSomador.get())
         Multiplexadores.MuxPC.set_bits_1(Registradores.EXMEM.get_somador())
         Multiplexadores.MuxPC.set_sinal_de_controle(UnidadeDeControle.And.get())
-
-        if UnidadeDeControle.HazardDetectionUnit.get_pc_write() and MemoriaDeInstrucoes.its_valid(Pc.get_pc()):
-            Pc.set_pc(Multiplexadores.MuxPC.get())
-
-        PrimeiraEtatpa.Somadores_PrimeiroSomador_get = Somadores.PrimeiroSomador.get()
-        PrimeiraEtatpa.MemoriaDeInstrucoes_get_instruction = MemoriaDeInstrucoes.get_instruction()
-        # fim primeira etapa leitura
         imprimir_dados()
+        if UnidadeDeControle.HazardDetectionUnit.get_pc_write() and MemoriaDeInstrucoes.its_valid(
+                Pc.get_pc()):
+            Pc.set_pc(Multiplexadores.MuxPC.get())
+            PrimeiraEtatpa.Somadores_PrimeiroSomador_get = Somadores.PrimeiroSomador.get()
+            PrimeiraEtatpa.MemoriaDeInstrucoes_get_instruction = MemoriaDeInstrucoes.get_instruction()
+            quantidade_instrucoes += 1
+        else:
+            ciclos_ultima_instrucao += 1
+        # fim primeira etapa leitura
+        ciclo_de_clock += 1
+        # and quantidade_instrucoes < len(instrucoes_l)
+        if execucao_passo_a_passo:
+            input('Tecle enter para continuar...')
+    MemoriaDeInstrucoes.instrucoes.clear()
+    MemoriaDeInstrucoes.endereco_atual = "00000000000000000000000000000000"
+    PrimeiraEtatpa.Somadores_PrimeiroSomador_get = list("00000000000000000000000000000000")
+    PrimeiraEtatpa.MemoriaDeInstrucoes_get_instruction = list("00000000000000000000000000000000")
+
+    SegundaEtapa.IFID_get_instruction = list("00000000000000000000000000000000")
+    SegundaEtapa.UnidadeDeControle_Control_get_reg_dst = False
+    SegundaEtapa.UnidadeDeControle_Control_get_alu_op_0 = False
+    SegundaEtapa.UnidadeDeControle_Control_get_alu_op_1 = False
+    SegundaEtapa.UnidadeDeControle_Control_get_alu_src = False
+    SegundaEtapa.UnidadeDeControle_Control_get_branch = False
+    SegundaEtapa.UnidadeDeControle_Control_get_mem_read = False
+    SegundaEtapa.UnidadeDeControle_Control_get_mem_write = False
+    SegundaEtapa.UnidadeDeControle_Control_get_reg_write = False
+    SegundaEtapa.UnidadeDeControle_Control_get_mem_to_reg = False
+    SegundaEtapa.IFID_get_pc_mais_quatro = list("00000000000000000000000000000000")
+    SegundaEtapa.BancoDeRegistradores_get_read_data_1 = list("00000000000000000000000000000000")
+    SegundaEtapa.BancoDeRegistradores_get_read_data_2 = list("00000000000000000000000000000000")
+    SegundaEtapa.instrucao_0_15 = list("00000000000000000000000000000000")
+    SegundaEtapa.instrucao_16_20 = list("00000")
+    SegundaEtapa.instrucao_11_15 = list("00000")
+    SegundaEtapa.IFID_get_instruction_21_25 = SegundaEtapa.IFID_get_instruction[21:26]
+    SegundaEtapa.IFID_get_instruction_16_20 = SegundaEtapa.IFID_get_instruction[16:21]
+
+    TerceiraEtapa.Registradores_IDEX_get_branch = False
+    TerceiraEtapa.Registradores_IDEX_get_mem_read = False
+    TerceiraEtapa.Registradores_IDEX_get_mem_write = False
+    TerceiraEtapa.Registradores_IDEX_get_reg_write = False
+    TerceiraEtapa.Registradores_IDEX_get_mem_to_reg = False
+    TerceiraEtapa.Somadores_SegundoSomador_get = list("00000000000000000000000000000000")
+    TerceiraEtapa.Alu_zero_is_activate = False
+    TerceiraEtapa.Alu_get_alu_output = list("00000000000000000000000000000000")
+    TerceiraEtapa.Multiplexadores_MuxAlu2_get = list("00000000000000000000000000000000")
+    TerceiraEtapa.Multiplexadores_MuxEXMEM_get = list("00000")
+    TerceiraEtapa.Rs = list("00000")
+    TerceiraEtapa.Rt = list("00000")
+
+    QuartaEtapa.Registradores_EXMEM_get_reg_write = False
+    QuartaEtapa.Registradores_EXMEM_get_mem_to_reg = False
+    QuartaEtapa.MemoriaDeDados_get_read_data = list("00000000000000000000000000000000")
+    QuartaEtapa.Registradores_EXMEM_get_alu = list("00000000000000000000000000000000")
+    QuartaEtapa.Registradores_EXMEM_get_mux_2 = list("00000")
+
+    QuintaEtapa.Registradores_MEMWB_get_mux = list("00000")
+    QuintaEtapa.Multiplexadores_MuxReg_get = list("00000000000000000000000000000000")
+    QuintaEtapa.Registradores_MEMWB_get_reg_write = False
+
+
+if __name__ == "__main__":
+    MemoriaDeDados.inicializar_memoria()
+
+    opcao: str = '1'
+    instrucoes_l: list = []
+    print('Bem vindo à simulação de um máquina MIPS com pipeline'.upper())
+    while opcao.__eq__('1') or opcao.__eq__('2') or opcao.__eq__('3') or opcao.__eq__('4'):
+        print('\nOpções disponíveis:')
+        print('\t(1) - Carregar um novo arquivo (.txt)')
+        print('\t(2) - Entrar com instruções via teclado')
+        print('\t(3) - Iniciar execução')
+        print('\t(4) - Reset\n')
+        opcao = input(f'Digite a opção desejada: ')
+        print()
+        if opcao == '1':
+            caminho_arquivo: str = input('Insira o caminhho do arquivo: ')
+            while not os.path.exists(caminho_arquivo):
+                print(f'Não foi possível encontrar o arquivo "{caminho_arquivo}"')
+                caminho_arquivo = input('Insira o caminho do arquivo: ')
+            instrucoes_l = Arquivo.read(caminho_arquivo)
+        elif opcao == '2':
+            ler_nova_instrucao: str = 's'
+            while ler_nova_instrucao.upper().__eq__('S') or ler_nova_instrucao.upper().__eq__('SIM'):
+                instrucao_lida = input('Insira a instrução desejada: ')
+                if (instrucao_lida.count('0') + instrucao_lida.count('1') == 32) and len(instrucao_lida) == 32:
+                    instrucoes_l.append(instrucao_lida.replace("\n", ""))
+                else:
+                    print('Não foi possível adicionar instrução,'
+                          ' uma instrução válida deve ser composta por 32 dígitos "0"s e "1"s!')
+                ler_nova_instrucao = input('Deseja ler uma nova instrução? s(sim) : ')
+        elif opcao == '3':
+            Pc.set_pc("00000000000000000000000000000000")
+            print('Opções de execução:')
+            print('\t(1) - Execução passo a passo')
+            print('\t(2) - Execução direta')
+            tipo_execucao = input('Digite a opção desejada: ')
+            if tipo_execucao.__eq__('1') or tipo_execucao.__contains__('passo a passo'):
+                executar(True, instrucoes_lidas=instrucoes_l)
+            else:
+                executar(False, instrucoes_lidas=instrucoes_l)
+        elif opcao == '4':
+            Pc.set_pc("00000000000000000000000000000000")
+            instrucoes_l.clear()
+            MemoriaDeInstrucoes.instrucoes.clear()
+            MemoriaDeInstrucoes.endereco_atual = "00000000000000000000000000000000"
+            value_reset = "00000000000000000000000000000000"
+            MemoriaDeDados.dados.clear()
+            MemoriaDeDados.inicializar_memoria()
+            V0.set(value_reset)
+            V1.set(value_reset)
+            A0.set(value_reset)
+            A1.set(value_reset)
+            A2.set(value_reset)
+            A3.set(value_reset)
+            T0.set(value_reset)
+            T1.set(value_reset)
+            T2.set(value_reset)
+            T3.set(value_reset)
+            T4.set(value_reset)
+            T5.set(value_reset)
+            T6.set(value_reset)
+            T7.set(value_reset)
+            S0.set(value_reset)
+            S1.set(value_reset)
+            S2.set(value_reset)
+            S3.set(value_reset)
+            S4.set(value_reset)
+            S5.set(value_reset)
+            S6.set(value_reset)
+            S7.set(value_reset)
+            T8.set(value_reset)
+            T9.set(value_reset)
+            Sp.set(value_reset)
+            Ra.set(value_reset)
+
+            PrimeiraEtatpa.Somadores_PrimeiroSomador_get = list("00000000000000000000000000000000")
+            PrimeiraEtatpa.MemoriaDeInstrucoes_get_instruction = list("00000000000000000000000000000000")
+
+            SegundaEtapa.IFID_get_instruction = list("00000000000000000000000000000000")
+            SegundaEtapa.UnidadeDeControle_Control_get_reg_dst = False
+            SegundaEtapa.UnidadeDeControle_Control_get_alu_op_0 = False
+            SegundaEtapa.UnidadeDeControle_Control_get_alu_op_1 = False
+            SegundaEtapa.UnidadeDeControle_Control_get_alu_src = False
+            SegundaEtapa.UnidadeDeControle_Control_get_branch = False
+            SegundaEtapa.UnidadeDeControle_Control_get_mem_read = False
+            SegundaEtapa.UnidadeDeControle_Control_get_mem_write = False
+            SegundaEtapa.UnidadeDeControle_Control_get_reg_write = False
+            SegundaEtapa.UnidadeDeControle_Control_get_mem_to_reg = False
+            SegundaEtapa.IFID_get_pc_mais_quatro = list("00000000000000000000000000000000")
+            SegundaEtapa.BancoDeRegistradores_get_read_data_1 = list("00000000000000000000000000000000")
+            SegundaEtapa.BancoDeRegistradores_get_read_data_2 = list("00000000000000000000000000000000")
+            SegundaEtapa.instrucao_0_15 = list("00000000000000000000000000000000")
+            SegundaEtapa.instrucao_16_20 = list("00000")
+            SegundaEtapa.instrucao_11_15 = list("00000")
+            SegundaEtapa.IFID_get_instruction_21_25 = SegundaEtapa.IFID_get_instruction[21:26]
+            SegundaEtapa.IFID_get_instruction_16_20 = SegundaEtapa.IFID_get_instruction[16:21]
+
+            TerceiraEtapa.Registradores_IDEX_get_branch = False
+            TerceiraEtapa.Registradores_IDEX_get_mem_read = False
+            TerceiraEtapa.Registradores_IDEX_get_mem_write = False
+            TerceiraEtapa.Registradores_IDEX_get_reg_write = False
+            TerceiraEtapa.Registradores_IDEX_get_mem_to_reg = False
+            TerceiraEtapa.Somadores_SegundoSomador_get = list("00000000000000000000000000000000")
+            TerceiraEtapa.Alu_zero_is_activate = False
+            TerceiraEtapa.Alu_get_alu_output = list("00000000000000000000000000000000")
+            TerceiraEtapa.Multiplexadores_MuxAlu2_get = list("00000000000000000000000000000000")
+            TerceiraEtapa.Multiplexadores_MuxEXMEM_get = list("00000")
+            TerceiraEtapa.Rs = list("00000")
+            TerceiraEtapa.Rt = list("00000")
+
+            QuartaEtapa.Registradores_EXMEM_get_reg_write = False
+            QuartaEtapa.Registradores_EXMEM_get_mem_to_reg = False
+            QuartaEtapa.MemoriaDeDados_get_read_data = list("00000000000000000000000000000000")
+            QuartaEtapa.Registradores_EXMEM_get_alu = list("00000000000000000000000000000000")
+            QuartaEtapa.Registradores_EXMEM_get_mux_2 = list("00000")
+
+            QuintaEtapa.Registradores_MEMWB_get_mux = list("00000")
+            QuintaEtapa.Multiplexadores_MuxReg_get = list("00000000000000000000000000000000")
+            QuintaEtapa.Registradores_MEMWB_get_reg_write = False

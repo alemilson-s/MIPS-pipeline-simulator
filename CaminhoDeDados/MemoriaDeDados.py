@@ -118,6 +118,7 @@ class MemoriaDeDados:
         """
         if cls.mem_read:
             cls.readData = cls.dados[cls.address].get_dado()
+        cls.mem_read = False
 
     @classmethod
     def write(cls):
@@ -125,7 +126,11 @@ class MemoriaDeDados:
         Método para alterar o conteudo de um endereco de memória
         """
         if cls.mem_write:
-            cls.dados[cls.address].set_dado(cls.writeData)
+            try:
+                cls.dados[cls.address].set_dado(cls.writeData)
+            except KeyError:
+                print(f"Mémoria cheia!")
+        cls.mem_write = False
 
     @classmethod
     def get_read_data(cls):
