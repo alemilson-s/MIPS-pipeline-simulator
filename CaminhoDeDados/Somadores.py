@@ -114,6 +114,7 @@ class SegundoSomador:
     def run(cls):
         cls.output = soma(cls.primeiro_operando, cls.segundo_operando)
 
+
 # Exemplos de utilização
 # AdderPCMoreFour.set_primeiro_operando(PC.get_pc())
 # AdderPCMoreFour.run()

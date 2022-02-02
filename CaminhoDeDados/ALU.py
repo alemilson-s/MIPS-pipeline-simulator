@@ -1,3 +1,4 @@
+from CaminhoDeDados.Pipeline import Registradores
 from UnidadeDeControle import UnidadeDeControle
 
 
@@ -171,9 +172,10 @@ class Alu:
         elif cls.ALUControl_output.__eq__('1010'):  # jr
             pass
         elif cls.ALUControl_output.__eq__('1111'):  # sll
-            quantidade_deslocamento = alu_2[6:11]
+            aux = Registradores.IDEX.get_instruction_0_15()
+            quantidade_deslocamento = aux[6:11]
             n = 0
-            for indice, valor in enumerate(quantidade_deslocamento[::-1]):
+            for indice, valor in enumerate(quantidade_deslocamento):
                 valor = int(valor) * (2 ** indice)
                 n += valor
             for i in range(n):
